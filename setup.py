@@ -1,6 +1,6 @@
 # !/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 
 dev_requirements = ["pytest", "pytest-cookies", "cookiecutter", "tox", "invoke", "pyyaml"]
 docs_requirements = ["invocations", "sphinx>=2.0", "romnnn_sphinx_press_theme"]
