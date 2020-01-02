@@ -1,9 +1,9 @@
 =======
-Credits
+Authors
 =======
 
-Development Lead
-----------------
+Maintainers
+-----------
 
 * {{ cookiecutter.full_name }} <{{ cookiecutter.email }}>
 

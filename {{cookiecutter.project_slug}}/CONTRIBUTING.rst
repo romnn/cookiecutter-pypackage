@@ -1,16 +1,14 @@
-.. highlight:: shell
+.. highlight:: console
 
 ============
 Contributing
 ============
 
-Contributions are welcome, and they are greatly appreciated! Every little bit
-helps, and credit will always be given.
+Contributions are welcome and greatly appreciated!
+Contributions will always be credited.
 
-You can contribute in many ways:
-
-Types of Contributions
-----------------------
+How can I contribute?
+---------------------
 
 Report Bugs
 ~~~~~~~~~~~
@@ -26,14 +24,14 @@ If you are reporting a bug, please include:
 Fix Bugs
 ~~~~~~~~
 
-Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
-wanted" is open to whoever wants to implement it.
+Look through the `GitHub issues`_ for bugs. Anything tagged with *"bug"* and *"help
+wanted"* is open to whoever wants to implement it.
 
 Implement Features
 ~~~~~~~~~~~~~~~~~~
 
-Look through the GitHub issues for features. Anything tagged with "enhancement"
-and "help wanted" is open to whoever wants to implement it.
+Look through the `GitHub issues`_ for features. Anything tagged with *"enhancement"*
+and *"help wanted"* is open to whoever wants to implement it.
 
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
@@ -45,53 +43,53 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+The best way to send feedback is to `file an issue <https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues>`_ on GitHub.
 
 If you are proposing a feature:
 
 * Explain in detail how it would work.
 * Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
+* Remember that this is a volunteer-driven open source project, so contributions
   are welcome :)
 
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for local development.
+Ready to contribute? Here's how to set up {{ cookiecutter.project_slug }} for local development.
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitHub.
+1. Fork the `{{ cookiecutter.project_slug }} repo <https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}>`_ on GitHub.
 2. Clone your fork locally::
 
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install development dependencies into a virtual development environment (assuming you have ``pipenv`` installed)::
 
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
     $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
+    $ pipenv install --dev
+    $ invoke install-hooks
 
 4. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
-   Now you can make your changes locally.
+   Now you are ready to make changes. Remember to add tests to ``tests/`` and make sure all existing tests pass::
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+    $ pytest                                    # Run all tests
+    $ pytest tests/one_specific_test_file.py    # Run one specific test
+    $ tox                                       # Run the tests for different python versions
 
-    $ flake8 {{ cookiecutter.project_slug }} tests
-    $ python setup.py test or py.test
-    $ tox
+5. When you're done making changes, run all pre commit steps to make sure your changes pass all checks::
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+    $ invoke pre-commit
 
-6. Commit your changes and push your branch to GitHub::
+6. If you are done, commit your changes and push your branch to GitHub::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
-7. Submit a pull request through the GitHub website.
+7. Submit a pull request through the GitHub website so your changes can
+   be merged into the master.
 
 Pull Request Guidelines
 -----------------------
@@ -99,33 +97,19 @@ Pull Request Guidelines
 Before you submit a pull request, check that it meets these guidelines:
 
 1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.4, 3.5 and 3.6, and for PyPy. Check
-   https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+2. If the pull request adds functionality, the documentation (``docs/``)  should be updated. Put
+   your new functionality into a function with a docstring and add the
+   feature to the list in ``README.rst``.
+3. The pull request should work for python 3.5+. Check the
+   `build status of your pull request <https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests>`_
+   and make sure that all tests pass for all supported python versions.
 
-Tips
-----
+Publishing (Maintainers only)
+-----------------------------
 
-To run a subset of tests::
+After merging the changes, tag your commits with a new version and push to GitHub::
 
-{% if cookiecutter.use_pytest == 'y' -%}
-    $ py.test tests.test_{{ cookiecutter.project_slug }}
-{% else %}
-    $ python -m unittest tests.test_{{ cookiecutter.project_slug }}
-{%- endif %}
-
-Deploying
----------
-
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
-
-$ bumpversion patch # possible: major / minor / patch
-$ git push
+$ bump2version (major | minor | patch)
 $ git push --tags
 
-Travis will then deploy to PyPI if tests pass.
+.. _GitHub issues: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues

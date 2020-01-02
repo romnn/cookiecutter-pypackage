@@ -7,13 +7,9 @@ import shutil
 import platform
 
 from invoke import task
-try:
-    from pathlib import Path
-    Path().expanduser()
-except (ImportError, AttributeError):
-    from pathlib2 import Path
 import webbrowser
-
+from pathlib import Path
+Path().expanduser()
 
 ROOT_DIR = Path(__file__).parent
 SETUP_FILE = ROOT_DIR.joinpath("setup.py")
@@ -24,7 +20,7 @@ COVERAGE_FILE = ROOT_DIR.joinpath(".coverage")
 COVERAGE_DIR = ROOT_DIR.joinpath("htmlcov")
 COVERAGE_REPORT = COVERAGE_DIR.joinpath("index.html")
 DOCS_DIR = ROOT_DIR.joinpath("docs")
-DOCS_BUILD_DIR = DOCS_DIR.joinpath("_build")
+DOCS_BUILD_DIR = DOCS_DIR.joinpath("build")
 DOCS_INDEX = DOCS_BUILD_DIR.joinpath("index.html")
 PYTHON_DIRS = [str(d) for d in [SOURCE_DIR, TEST_DIR]]
 
@@ -42,41 +38,58 @@ def _delete_file(file):
 
 @task(help={'check': "Checks if source is formatted without applying changes"})
 def format(c, check=False):
-    """
-    Format code
+    """Format code
     """
     python_dirs_string = " ".join(PYTHON_DIRS)
-    # Run yapf
-    yapf_options = '--recursive {}'.format('--diff' if check else '--in-place')
-    c.run("yapf {} {}".format(yapf_options, python_dirs_string))
+    # Run black
+    black_options = '--diff' if check else ''
+    c.run("black {} {}".format(black_options, python_dirs_string))
     # Run isort
-    isort_options = '--recursive {}'.format(
-        '--check-only' if check else '')
+    isort_options = '--recursive {}'.format('--check-only' if check else '')
     c.run("isort {} {}".format(isort_options, python_dirs_string))
 
 
 @task
 def lint(c):
-    """
-    Lint code
+    """Lint code
     """
     c.run("flake8 {}".format(SOURCE_DIR))
-    c.run("pylint {}".format(SOURCE_DIR))
 
 
 @task
-def test(c):
+def test(c, min_coverage=None):
+    """Run tests
     """
-    Run tests
+    coverage_options = '--cov --cov-fail-under={}'.format(min_coverage)
+    pytest_options = coverage_options if min_coverage else ''
+    c.run("pytest {}".format(pytest_options))
+
+
+@task
+def type_check(c):
+    """Check types
     """
-    pty = platform.system() == 'Linux'
-    c.run("python {} test".format(SETUP_FILE), pty=pty)
+    c.run("mypy")
+
+
+@task
+def install_hooks(c):
+    """Install pre-commit hooks
+    """
+    c.run("pre-commit install -t pre-commit")
+    c.run("pre-commit install -t pre-push")
+
+
+@task
+def pre_commit(c):
+    """Run all pre-commit checks
+    """
+    c.run("pre-commit run --all-files")
 
 
 @task(help={'publish': "Publish the result via coveralls"})
 def coverage(c, publish=False):
-    """
-    Create coverage report
+    """Create coverage report
     """
     c.run("coverage run --source {} -m pytest".format(SOURCE_DIR))
     c.run("coverage report")
@@ -89,27 +102,28 @@ def coverage(c, publish=False):
         webbrowser.open(COVERAGE_REPORT.as_uri())
 
 
-@task
-def docs(c):
+@task(help={'output': "Generated documentation output format (default is html)"})
+def docs(c, output="html"):
+    """Generate documentation
     """
-    Generate documentation
-    """
-    c.run("sphinx-build -b html {} {}".format(DOCS_DIR, DOCS_BUILD_DIR))
-    webbrowser.open(DOCS_INDEX.as_uri())
+    c.run("sphinx-apidoc -o {} {{ cookiecutter.project_slug }}".format(DOCS_DIR))
+    c.run("sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
+    if output.lower() == "html":
+        webbrowser.open(DOCS_INDEX.as_uri())
+    elif output.lower() == "latex":
+        c.run("cd {} && make".format(DOCS_BUILD_DIR))
 
 
 @task
 def clean_docs(c):
-    """
-    Clean up files from documentation builds
+    """Clean up files from documentation builds
     """
     c.run("rm -fr {}".format(DOCS_BUILD_DIR))
 
 
 @task
 def clean_build(c):
-    """
-    Clean up files from package building
+    """Clean up files from package building
     """
     c.run("rm -fr build/")
     c.run("rm -fr dist/")
@@ -120,8 +134,7 @@ def clean_build(c):
 
 @task
 def clean_python(c):
-    """
-    Clean up python file artifacts
+    """Clean up python file artifacts
     """
     c.run("find . -name '*.pyc' -exec rm -f {} +")
     c.run("find . -name '*.pyo' -exec rm -f {} +")
@@ -131,8 +144,7 @@ def clean_python(c):
 
 @task
 def clean_tests(c):
-    """
-    Clean up files from testing
+    """Clean up files from testing
     """
     _delete_file(COVERAGE_FILE)
     shutil.rmtree(TOX_DIR, ignore_errors=True)
@@ -141,16 +153,14 @@ def clean_tests(c):
 
 @task(pre=[clean_build, clean_python, clean_tests, clean_docs])
 def clean(c):
-    """
-    Runs all clean sub-tasks
+    """Runs all clean sub-tasks
     """
     pass
 
 
 @task(clean)
 def dist(c):
-    """
-    Build source and wheel packages
+    """Build source and wheel packages
     """
     c.run("python setup.py sdist")
     c.run("python setup.py bdist_wheel")
@@ -158,7 +168,6 @@ def dist(c):
 
 @task(pre=[clean, dist])
 def release(c):
-    """
-    Make a release of the python package to pypi
+    """Make a release of the python package to pypi
     """
     c.run("twine upload dist/*")

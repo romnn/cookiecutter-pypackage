@@ -5,18 +5,22 @@ name = "pypi"
 
 [dev-packages]
 invoke = "*"
-bumpversion = "*"
-coverage = "*"
-wheel = "*"
-sphinx = "*"
-twine = "*"
+m2r = "*"
+bump2version = "*"
 tox = "*"
-"flake8" = "*"
-pylint = "*"
-{% if cookiecutter.use_pytest == 'y' -%}
-pytest = "*"{% endif %}
+sphinx = "*"
+romnnn_sphinx_press_theme = "*"
+sphinxemoji = "*"
+flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+pytest-sugar = "*"
+coverage = "*"
 isort = "*"
-yapf = "*"
+mypy = "*"
+pre-commit = "*"
+black = "==19.10b0"
 
 [packages]
 {{cookiecutter.project_slug}} = {path = ".", editable = true}

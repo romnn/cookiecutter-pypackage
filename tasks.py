@@ -2,13 +2,9 @@
 
 import webbrowser
 import platform
-try:
-    from pathlib import Path
-    Path().expanduser()
-except (ImportError, AttributeError):
-    from pathlib2 import Path
-
 from invoke import task
+from pathlib import Path
+Path().expanduser()
 
 ROOT_DIR = Path(__file__).parent
 DOCS_DIR = ROOT_DIR.joinpath('docs')
@@ -23,7 +19,7 @@ def test(c):
     Run tests
     """
     pty = platform.system() == 'Linux'
-    c.run("pytest".format(TEST_DIR), pty=pty)
+    c.run("pytest", pty=pty)
 
 
 @task

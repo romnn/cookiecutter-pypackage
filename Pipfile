@@ -5,10 +5,12 @@ name = "pypi"
 
 [dev-packages]
 invoke = "*"
-pytest = "*"
 tox = "*"
 cookiecutter = "*"
+pytest = "*"
 pytest-cookies = "*"
+pytest-xdist = "*"
+pytest-sugar = "*"
 sphinx = "*"
 pyyaml = "*"
 invocations = "*"

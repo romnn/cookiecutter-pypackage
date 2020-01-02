@@ -1,43 +1,66 @@
-{% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
-{% for _ in cookiecutter.project_name %}={% endfor %}
+===============================
 {{ cookiecutter.project_name }}
-{% for _ in cookiecutter.project_name %}={% endfor %}
-
-{% if is_open_source %}
-.. image:: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg
-        :target: https://pypi.python.org/pypi/{{ cookiecutter.project_slug }}
+===============================
 
 .. image:: https://img.shields.io/travis/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.svg
         :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+        :alt: Build Status
+
+.. image:: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg
+        :target: https://pypi.python.org/pypi/{{ cookiecutter.project_slug }}
+        :alt: PyPi version
+
+.. image:: https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+        :target: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+        :alt: License
 
 .. image:: https://readthedocs.org/projects/{{ cookiecutter.project_slug | replace("_", "-") }}/badge/?version=latest
         :target: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
-{%- endif %}
 
-{% if cookiecutter.add_pyup_badge == 'y' %}
-.. image:: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/shield.svg
-     :target: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/
-     :alt: Updates
-{% endif %}
+""""""""
 
+Your short description here
 
-{{ cookiecutter.project_short_description }}
+.. code-block:: console
 
-{% if is_open_source %}
-* Free software: {{ cookiecutter.open_source_license }}
-* Documentation: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io.
-{% endif %}
+    $ pip install {{ cookiecutter.project_slug }}
 
-Features
---------
+See the `official documentation`_ for more information.
 
-* TODO
+.. _official documentation: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io
 
-Credits
--------
+.. code-block:: python
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+    import {{ cookiecutter.project_slug }}
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+Development
+-----------
+
+For detailed instructions see `CONTRIBUTING <CONTRIBUTING.rst>`_.
+
+Tests
+~~~~~~~
+You can run tests with
+
+.. code-block:: console
+
+    $ invoke test
+    $ invoke test --min-coverage=90     # Fail when code coverage is below 90%
+    $ invoke type-check                 # Run mypy type checks
+
+Linting and formatting
+~~~~~~~~~~~~~~~~~~~~~~~~
+Lint and format the code with
+
+.. code-block:: console
+
+    $ invoke format
+    $ invoke lint
+
+All of this happens when you run ``invoke pre-commit``.
+
+Note
+-----
+
+This project is still in the alpha stage and should not be considered production ready.

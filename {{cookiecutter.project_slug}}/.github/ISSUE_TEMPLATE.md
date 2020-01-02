@@ -1,13 +1,15 @@
-* {{ cookiecutter.project_name }} version:
-* Python version:
-* Operating System:
+#### Information
 
-### Description
+- ``{{ cookiecutter.project_name }}`` version:
+- ``python`` version:
+- Operating System:
+
+#### Description
 
 Describe what you were trying to get done.
 Tell us what happened, what went wrong, and what you expected to happen.
 
-### What I Did
+#### Help us reproduce the problem
 
 ```
 Paste the command(s) you ran and the output.

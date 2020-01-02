@@ -92,6 +92,6 @@ docs/_build/
 # PyBuilder
 target/
 
-# Cookiecutter
+# Cookiecutter generated
 output/
-python_boilerplate/
+python_package_template/
