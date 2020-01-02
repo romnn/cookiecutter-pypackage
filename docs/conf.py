@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.abspath('../{{cookiecutter.project_slug}}'))
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+needs_sphinx = '2.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -100,7 +100,7 @@ exclude_patterns = ['_build']
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = None
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -112,16 +112,22 @@ pygments_style = 'sphinx'
 todo_include_todos = True
 
 
-# -- Options for HTML output ----------------------------------------------
+# -- Options for HTML output -------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+# a list of builtin themes. Default: sphinx_rtd_theme
+#
+html_theme = 'press'  # Install with pip install romnnn_sphinx_press_theme
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
+# Theme options are theme-specific and customize the look and feel of a
+# theme further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+#
+html_theme_options = {
+  "external_links": [
+      ("Github", "https://github.com/romnnn/cookiecutter-pypackage")
+  ]
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
