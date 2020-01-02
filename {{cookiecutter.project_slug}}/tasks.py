@@ -4,7 +4,6 @@ Tasks for maintaining the project.
 Execute 'invoke --list' for guidance on using Invoke
 """
 import shutil
-import platform
 
 from invoke import task
 import webbrowser
