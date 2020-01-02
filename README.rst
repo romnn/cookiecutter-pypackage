@@ -6,6 +6,10 @@ Cookiecutter PyPackage (romnnn)
 
 .. image:: https://travis-ci.org/romnnn/cookiecutter-pypackage.svg?branch=master
     :target: https://travis-ci.org/romnnn/cookiecutter-pypackage
+    :alt: Build status
+.. image:: https://readthedocs.org/projects/romnnn-cookiecutter-pypackage/badge/?version=latest
+    :target: https://romnnn-cookiecutter-pypackage.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 Opinionated ``cookiecutter`` template for python packages, forked from `briggySmalls/cookiecutter-pypackage`_.
 
@@ -32,7 +36,7 @@ to my personal needs and modified for ease of use and simplicity.
 
 The following features have been **removed**:
 
-* Support for ``python2``. It's finally over |:tada:|!
+* Support for ``python2``. It's finally over :tada:!
 * Support for bootstrapping multiple licenses. MIT is used.
 * Support for bootstrapping multiple testing frameworks. ``pytest`` is used.
 * Optional Google docstrings are now default.
@@ -61,11 +65,11 @@ Quickstart
 
 Install ``cookiecutter>=1.4.0`` if you haven't already::
 
-    pip install -u cookiecutter
+    $ pip install -u cookiecutter
 
 Generate your python project (you will be asked for the project name etc)::
 
-    cookiecutter https://github.com/romnnn/cookiecutter-pypackage.git
+    $ cookiecutter https://github.com/romnnn/cookiecutter-pypackage.git
 
 After your project was created:
 
@@ -78,7 +82,6 @@ After your project was created:
     $ git push origin master
 
 * Add the repo to your `Travis-CI`_ account.
-* Register your project with PyPI_ to obtain a deployment token.
 * `Install the Travis CLI`_ and run::
 
     $ travis encrypt <your-api-token> --add deploy.password         # When using travis.org
@@ -101,6 +104,7 @@ After your project was created:
     $ python setup.py sdist
     $ twine upload dist/*
 
+* Get a deployment token for your package on PyPI_.
 * Start coding! Add your package dependencies to your ``setup.py`` and ``Pipfile`` as you go,
   and lock them into your virtual environment with::
 
