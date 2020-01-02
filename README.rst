@@ -5,7 +5,7 @@ Cookiecutter PyPackage (romnnn)
 ===============================
 
 .. image:: https://travis-ci.org/romnnn/cookiecutter-pypackage.svg?branch=master
-    :target: https://travis-ci.org/romnnn/cookiecutter-pypackage
+    :target: https://travis-ci.com/romnnn/cookiecutter-pypackage
     :alt: Build status
 .. image:: https://readthedocs.org/projects/romnnn-cookiecutter-pypackage/badge/?version=latest
     :target: https://romnnn-cookiecutter-pypackage.readthedocs.io/en/latest/?badge=latest
@@ -36,7 +36,7 @@ to my personal needs and modified for ease of use and simplicity.
 
 The following features have been **removed**:
 
-* Support for ``python2``. It's finally over :tada:!
+* Support for ``python2``. It's finally over! :tada:
 * Support for bootstrapping multiple licenses. MIT is used.
 * Support for bootstrapping multiple testing frameworks. ``pytest`` is used.
 * Optional Google docstrings are now default.
@@ -81,11 +81,22 @@ After your project was created:
     $ git commit -m "Initial commit"
     $ git push origin master
 
-* Add the repo to your `Travis-CI`_ account.
+* Install the development requirements into a virtual environment with::
+
+    $ pipenv install --dev
+
+* Make an initial release of your package to PyPI_. You will be asked for your credentials::
+
+    $ pip install twine
+    $ python setup.py sdist
+    $ twine upload dist/*
+
+* Get a deployment token for your package on PyPI_.
+* Add the repo to your `Travis-CI`_ account. If you have connected travis with GitHub this is done automatically.
 * `Install the Travis CLI`_ and run::
 
-    $ travis encrypt <your-api-token> --add deploy.password         # When using travis.org
-    $ travis encrypt <your-api-token> --add deploy.password --com   # When using travis.com
+    $ travis encrypt <your-token> --add deploy.password         # When using travis.org
+    $ travis encrypt <your-token> --add deploy.password --com   # When using travis.com
 
   to automatically encrypt your PyPI token into your ``.travis.yml`` config.
   You will most likely still need to manually edit the ``.travis.yml`` file because the token is appended
@@ -98,13 +109,7 @@ After your project was created:
   as a secret environment variable ``GH_TOKEN``.
 
   If you do not want to deploy to `GitHub Pages`_, remove the ``deploy pages`` build stage from ``.travis.yml``.
-* Make an initial release of your package to PyPI_. You will be asked for your credentials::
 
-    $ pip install twine
-    $ python setup.py sdist
-    $ twine upload dist/*
-
-* Get a deployment token for your package on PyPI_.
 * Start coding! Add your package dependencies to your ``setup.py`` and ``Pipfile`` as you go,
   and lock them into your virtual environment with::
 
@@ -113,8 +118,8 @@ After your project was created:
 * Release new versions of your package by pushing a new tag to master::
 
     $ bump2version (major | minor | patch)
-    $ git push origin master
-    $ git push --tags origin master
+    $ git push
+    $ git push --tags
 
 .. _Travis-CI: https://travis-ci.com
 .. _PyPI: https://pypi.org
@@ -125,7 +130,6 @@ After your project was created:
 Documentation
 -------------
 
-If you need more guidance I encourage you to have a look at the `more extensive documentation`_ of
-the original package by `briggySmalls <https://github.com/briggySmalls>`_.
+If you need more guidance I encourage you to have a look at the `more extensive documentation`_.
 
-.. _`more extensive documentation`: https://briggysmalls.github.io/cookiecutter-pypackage/
+.. _`more extensive documentation`: https://romnnn-cookiecutter-pypackage.readthedocs.io/en/latest/
