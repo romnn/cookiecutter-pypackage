@@ -3,7 +3,7 @@
 from setuptools import setup
 
 dev_requirements = ["pytest", "pytest-cookies", "cookiecutter", "tox", "invoke", "pyyaml"]
-docs_requirements = ["invocations", "sphinx>=2.0", "romnnn_sphinx_press_theme"]
+docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme"]
 
 setup(
     name="romnnn-cookiecutter-pypackage",

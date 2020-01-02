@@ -13,7 +13,6 @@ pytest-xdist = "*"
 pytest-sugar = "*"
 sphinx = ">=2.0"
 pyyaml = "*"
-invocations = "*"
 romnnn_sphinx_press_theme = "*"
 
 [packages]
