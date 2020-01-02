@@ -7,21 +7,23 @@ Troubleshooting
 .. note:: Can you help improve this file? `Edit this file`_
           and submit a pull request with your improvements!
 
-.. _`Edit this file`: https://github.com/audreyr/cookiecutter-pypackage/blob/master/docs/troubleshooting.rst
+.. _`Edit this file`: https://github.com/romnnn/cookiecutter-pypackage/blob/master/docs/troubleshooting.rst
 
 
 Windows Issues
 --------------
 
-* Some people have reported issues using git bash; try using the Command Terminal instead.
+* Some people have reported issues using ``git bash``
+  Try using the ``Command Terminal`` instead.
 
-* Virtual environments can sometimes be tricky on Windows. If you have Python 3.5 or above installed (recommended), this should get you a virtualenv named ``myenv`` created inside the current folder:
+* Virtual environments can sometimes be tricky on Windows.
+  If you have python 3.5 or above installed (recommended), this should get you a virtualenv named ``myenv`` created inside the current folder:
 
 .. code-block:: powershell
 
     > c:\Python35\python -m venv myenv
 
-Or:
+or:
 
 .. code-block:: powershell
 

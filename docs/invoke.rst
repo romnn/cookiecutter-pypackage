@@ -1,11 +1,16 @@
 Invoke
 ======
 
-The generated project is ready to run some useful tasks like formatting, linting, testing.
+The generated project is ready to run some useful tasks like
 
-To do this we use pyinvoke_ to wrap up the required commands.
+* formatting
+* linting
+* testing
 
-.. automodule:: tasks
-   :members:
+invoke_ is used to wrap up the required commands. To see what commands are available, run::
 
-.. _pyinvoke: http://www.pyinvoke.org/
+    $ invoke --list
+
+..  note:: This assumes you already installed the development requirements with ``pipenv install --dev``.
+
+.. _invoke: http://www.pyinvoke.org/
