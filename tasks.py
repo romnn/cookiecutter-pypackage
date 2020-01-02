@@ -8,7 +8,7 @@ Path().expanduser()
 
 ROOT_DIR = Path(__file__).parent
 DOCS_DIR = ROOT_DIR.joinpath('docs')
-DOCS_BUILD_DIR = DOCS_DIR.joinpath('_build')
+DOCS_BUILD_DIR = DOCS_DIR.joinpath('build')
 DOCS_INDEX = DOCS_BUILD_DIR.joinpath('index.html')
 TEST_DIR = ROOT_DIR.joinpath('tests')
 
