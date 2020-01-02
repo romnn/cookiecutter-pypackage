@@ -11,10 +11,10 @@ pytest = "*"
 pytest-cookies = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
-sphinx = "*"
+sphinx = ">=2.0"
 pyyaml = "*"
 invocations = "*"
-sphinx-rtd-theme = "*"
+romnnn_sphinx_press_theme = "*"
 
 [packages]
 

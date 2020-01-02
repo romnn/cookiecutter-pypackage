@@ -2,6 +2,9 @@
 
 from distutils.core import setup
 
+dev_requirements = ["pytest", "pytest-cookies", "cookiecutter", "tox", "invoke", "pyyaml"]
+docs_requirements = ["invocations", "sphinx>=2.0", "romnnn_sphinx_press_theme"]
+
 setup(
     name="romnnn-cookiecutter-pypackage",
     packages=[],
@@ -12,6 +15,10 @@ setup(
     author_email="contact@romnn.com",
     url="https://github.com/romnnn/cookiecutter-pypackage",
     keywords=["cookiecutter", "template", "package"],
+    extras_require={
+        'dev': docs_requirements + dev_requirements,
+        'docs': docs_requirements,
+    },
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",
