@@ -23,9 +23,10 @@ except (ImportError, AssertionError):
 
 requirements = ["Click>=6.0"]
 setup_requirements = ["pytest-runner"]
-test_requirements = ["pytest"]
+test_requirements = ["pytest", "pre-commit"]
+docs_requirements = ["sphinxemoji", "sphinx>=2.0", "romnnn_sphinx_press_theme"]
 dev_requirements = (
-    ["m2r", "twine", "sphinxemoji", "sphinx", "pre-commit"] + setup_requirements + test_requirements
+    ["m2r", "twine"] + setup_requirements + test_requirements + docs_requirements
 )
 
 setup(
@@ -63,7 +64,9 @@ setup(
     setup_requires=setup_requirements,
     test_suite="tests",
     tests_require=test_requirements,
-    extras_require=dict(dev=["m2r"]),
+    extras_require=dict(
+        dev=dev_requirements, docs=docs_requirements
+    ),
     url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
     version="{{ cookiecutter.version }}",
     zip_safe=False,
