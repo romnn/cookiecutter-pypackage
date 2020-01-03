@@ -3,8 +3,28 @@ python:
   - 3.8
   - 3.7
   - 3.6
-  - 3.5
 
-install: pip install -U tox-travis
+install: pip install -U tox-travis codecov
 
 script: tox
+
+jobs:
+  include:
+  - stage: deploy pages
+    script: invoke docs && touch docs/build/html/.nojekyll
+    before_script:
+    - pipenv install --dev --skip-lock
+    python: 3.6
+    deploy:
+      provider: pages
+      local_dir: docs/build/html
+      skip_cleanup: true
+      # Generate a GitHub access token for public repositories
+      # In your travis ci settings, set the token as a secret environment variable $GH_TOKEN
+      token: "$GH_TOKEN"
+      keep_history: true
+      on:
+        branch: master
+
+# after_success:
+#   - codecov
