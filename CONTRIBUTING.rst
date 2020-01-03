@@ -95,7 +95,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the documentation (``docs/``)  should be updated. Put
    your new functionality into a function with a docstring and add the
    feature to the list in ``README.rst``.
-3. The pull request should work for python 3.5+. Check the
+3. The pull request should work for python 3.6+. Check the
    `build status of your pull request <https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests>`_
    and make sure that all tests pass for all supported python versions.
 
