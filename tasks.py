@@ -19,15 +19,15 @@ def test(c):
     Run tests
     """
     pty = platform.system() == 'Linux'
-    c.run("pytest", pty=pty)
+    c.run("pipenv run pytest", pty=pty)
 
 
 @task(help={'output': "Generated documentation output format (default is html)"})
 def docs(c, output="html"):
     """Generate documentation
     """
-    c.run("sphinx-apidoc -o {} .".format(DOCS_DIR))
-    c.run("sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
+    c.run("pipenv run sphinx-apidoc -o {} .".format(DOCS_DIR))
+    c.run("pipenv run sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
     if output.lower() == "html":
         webbrowser.open(DOCS_INDEX.as_uri())
     elif output.lower() == "latex":

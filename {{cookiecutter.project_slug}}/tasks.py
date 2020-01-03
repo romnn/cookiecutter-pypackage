@@ -40,64 +40,62 @@ def format(c, check=False):
     """Format code
     """
     python_dirs_string = " ".join(PYTHON_DIRS)
-    # Run black
     black_options = '--diff' if check else ''
-    c.run("black {} {}".format(black_options, python_dirs_string))
-    # Run isort
+    c.run("pipenv run black {} {}".format(black_options, python_dirs_string))
     isort_options = '--recursive {}'.format('--check-only' if check else '')
-    c.run("isort {} {}".format(isort_options, python_dirs_string))
+    c.run("pipenv run isort {} {}".format(isort_options, python_dirs_string))
 
 
 @task
 def lint(c):
     """Lint code
     """
-    c.run("flake8 {}".format(SOURCE_DIR))
+    c.run("pipenv run flake8 {}".format(SOURCE_DIR))
 
 
 @task
 def test(c, min_coverage=None):
     """Run tests
     """
-    coverage_options = '--cov --cov-fail-under={}'.format(min_coverage)
-    pytest_options = coverage_options if min_coverage else ''
-    c.run("pytest {}".format(pytest_options))
+    pytest_options = '--cov-fail-under={}'.format(min_coverage) if min_coverage else ''
+    c.run("pipenv run pytest --cov={} {}".format(SOURCE_DIR, pytest_options))
 
 
 @task
 def type_check(c):
     """Check types
     """
-    c.run("mypy")
+    c.run("pipenv run mypy")
 
 
 @task
 def install_hooks(c):
     """Install pre-commit hooks
     """
-    c.run("pre-commit install -t pre-commit")
-    c.run("pre-commit install -t pre-push")
+    c.run("pipenv run pre-commit install -t pre-commit")
+    c.run("pipenv run pre-commit install -t pre-push")
 
 
 @task
 def pre_commit(c):
     """Run all pre-commit checks
     """
-    c.run("pre-commit run --all-files")
+    c.run("pipenv run pre-commit run --all-files")
 
 
-@task(help={'publish': "Publish the result via coveralls"})
-def coverage(c, publish=False):
+@task(pre=[test], help=dict(
+    publish="Publish the result (default False)",
+    provider="The provider to publish (default codecov)"
+))
+def coverage(c, publish=False, provider="codecov"):
     """Create coverage report
     """
-    c.run("coverage run --source {} -m pytest".format(SOURCE_DIR))
-    c.run("coverage report")
     if publish:
-        # Publish the results via coveralls
-        c.run("coveralls")
+        # Publish the results via provider (e.g. codecov or coveralls)
+        c.run("pipenv run {}".format(provider))
     else:
         # Build a local report
-        c.run("coverage html")
+        c.run("pipenv run coverage html -d {}".format(COVERAGE_DIR))
         webbrowser.open(COVERAGE_REPORT.as_uri())
 
 
@@ -105,8 +103,8 @@ def coverage(c, publish=False):
 def docs(c, output="html"):
     """Generate documentation
     """
-    c.run("sphinx-apidoc -o {} {{ cookiecutter.project_slug }}".format(DOCS_DIR))
-    c.run("sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
+    c.run("pipenv run sphinx-apidoc -o {} {{ cookiecutter.project_slug }}".format(DOCS_DIR))
+    c.run("pipenv run sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
     if output.lower() == "html":
         webbrowser.open(DOCS_INDEX.as_uri())
     elif output.lower() == "latex":

@@ -6,7 +6,7 @@ repos:
     name: format
     stages: [commit]
     language: system
-    entry: invoke format
+    entry: pipenv run invoke format
     pass_filenames: false
     types: [python]
 
@@ -14,7 +14,7 @@ repos:
     name: lint
     stages: [commit]
     language: system
-    entry: invoke lint
+    entry: pipenv run invoke lint
     pass_filenames: false
     types: [python]
 
@@ -22,7 +22,7 @@ repos:
     name: type-check
     stages: [commit]
     language: system
-    entry: invoke type-check
+    entry: pipenv run invoke type-check
     pass_filenames: false
     types: [python]
 
@@ -30,6 +30,6 @@ repos:
     name: test
     stages: [commit]
     language: system
-    entry: invoke test --min-coverage=90
+    entry: pipenv run invoke test --min-coverage=90
     pass_filenames: false
     types: [python]
