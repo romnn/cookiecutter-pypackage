@@ -6,7 +6,7 @@ python:
 
 install: pip install -U tox-travis codecov
 
-script: tox
+script: tox -e py36, py37, py38, pypy, docs, codecov
 
 jobs:
   include:
@@ -25,6 +25,3 @@ jobs:
       keep_history: true
       on:
         branch: master
-
-after_success:
-  - codecov

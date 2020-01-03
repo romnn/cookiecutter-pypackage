@@ -6,7 +6,7 @@ python:
   - 3.6
 
 install: pip install -U tox-travis
-script: tox
+script: tox -e py36, py37, py38, lint, format, typecheck, codecov
 
 jobs:
   include:
@@ -37,5 +37,3 @@ jobs:
       on:
         tags: true
         python: 3.6
-after_success:
-  - coveralls
