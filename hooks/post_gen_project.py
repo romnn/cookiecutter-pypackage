@@ -5,7 +5,7 @@ import subprocess
 
 try:
     from halo import Halo
-except ImportError:
+except (ImportError, ModuleNotFoundError):
     subprocess.check_output(
         "python3 -m pip install halo", stderr=subprocess.STDOUT, shell=True
     )
