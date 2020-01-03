@@ -11,13 +11,13 @@ script: tox
 jobs:
   include:
   - stage: deploy pages
-    script: invoke docs && touch docs/build/html/.nojekyll
+    script: invoke docs && touch docs/build/.nojekyll
     before_script:
     - pipenv install --dev --skip-lock
     python: 3.6
     deploy:
       provider: pages
-      local_dir: docs/build/html
+      local_dir: docs/build
       skip_cleanup: true
       # Generate a GitHub access token for public repositories
       # In your travis ci settings, set the token as a secret environment variable $GH_TOKEN
