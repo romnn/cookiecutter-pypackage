@@ -26,5 +26,5 @@ jobs:
       on:
         branch: master
 
-# after_success:
-#   - codecov
+after_success:
+  - codecov
