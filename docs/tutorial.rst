@@ -13,7 +13,7 @@ To start with, you will need a `GitHub account`_ and an account on `PyPI`_. Crea
 .. _`GitHub Help`: https://help.github.com/
 
 
-Step 1: Install Cookiecutter |:cookie:|
+|:cookie:| Install Cookiecutter
 ---------------------------------------
 
 Install ``cookiecutter>=1.4.0``:
@@ -29,7 +29,7 @@ We'll also need ``pipenv`` so install that too:
     $ pip install pipenv
 
 
-Step 2: Generate Your Package |:package:|
+|:package:| Generate Your Package
 -----------------------------------------
 
 Now it's time to generate your Python package.
@@ -44,7 +44,7 @@ You'll be asked to enter a bunch of values to set the package up.
 If you don't know what to enter, stick with the defaults.
 
 
-Step 3: Create a GitHub Repo |:octocat:|
+|:octopus:| Create a GitHub Repo
 ----------------------------------------
 
 Go to your GitHub account and create a new repo named ``mypackage``, where ``mypackage`` matches the ``[project_slug]`` from your answers to running cookiecutter.
@@ -70,7 +70,7 @@ You can `Generate`_ a key or `Add`_ an existing one.
 .. _`Generate`: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 .. _`Add`: https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 
-Step 4: Install development requirements |:hammer_and_wrench:|
+|:hammer_and_wrench:| Install development requirements
 --------------------------------------------------------------
 
 You should still be in the folder containing the ``Pipfile`` file.
@@ -81,7 +81,7 @@ Install the new project's local development requirements inside a virtual enviro
 
     $ pipenv install --dev
 
-Step 5: Initial release to PyPI |:tada:|
+|:tada:| Initial release to PyPI
 ----------------------------------------
 
 The Python Package Index or `PyPI`_ is the official third-party software repository for the Python programming language.
@@ -103,7 +103,7 @@ When you are ready, upload your package:
 
 If everything goes well, your package should be online.
 
-Step 6: Set up TravisCI |:construction_worker:|
+|:construction_worker:| Set up TravisCI
 -----------------------------------------------
 
 `Travis-CI`_ [*]_ is a continuous integration tool used to prevent integration problems.
@@ -140,7 +140,7 @@ outside of any build stage.
 .. _the installation guide: https://github.com/travis-ci/travis.rb#installation
 
 
-Step 7: Set up ReadTheDocs |:book:|
+|:book:| Set up ReadTheDocs
 -----------------------------------
 
 `ReadTheDocs`_ hosts documentation for the open source community.
@@ -156,7 +156,7 @@ Now your documentation will get rebuilt when you make changes to your package's 
 
 .. _`ReadTheDocs`: https://readthedocs.org/
 
-Step 8: Set up GitHub Pages |:pencil:|
+|:pencil:| Set up GitHub Pages
 --------------------------------------
 
 `GitHub Pages`_ is a service offered by GitHub that will host a static website along with your package for free.
@@ -173,7 +173,7 @@ The website will be available at `<https://myusername.github.io/mypackage/>`_.
 The default ``deploy pages`` stage in your ``.travis.yml`` will publish your documentation to GitHub Pages (the same as on ReadTheDocs), but you might deploy a different website for your project.
 
 
-Having problems? |:rotating_light:|
+|:rotating_light:| Having problems?
 -----------------------------------
 
 Visit our :ref:`troubleshooting` page for help.
