@@ -1,201 +1,229 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Welcome to cookiecutter-pypackage’s documentation! &mdash; cookiecutter-pypackage 0.9.0 documentation</title>
-  
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Welcome to romnnn-cookiecutter-pypackage’s documentation!</title>
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.9.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <link rel="stylesheet" href="_static/pygments.css">
+      <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/romnnn_sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Cookiecutter PyPackage" href="readme.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="#" class="icon icon-home"> cookiecutter-pypackage
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                0.9.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Cookiecutter PyPackage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pypi_release_checklist.html">PyPI Release Checklist</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="prompts.html">Prompts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoke.html">Invoke</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="travis_pypi_setup.html">Travis/PyPI Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="console_script_setup.html">Console Script Setup</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+        <script type="text/javascript" src="_static/language_data.js"></script>
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">cookiecutter-pypackage</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+      <script src="_static/theme-vendors.js"></script>
+      <script src="_static/theme.js" defer></script>
     
-      <li><a href="#">Docs</a> &raquo;</li>
-        
-      <li>Welcome to cookiecutter-pypackage’s documentation!</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Cookiecutter PyPackage (romnnn)" href="readme.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <div class="home-link-container">
+      <router-link to="#" class="home-link">
+      
+        <span class="site-name">romnnn-cookiecutter-pypackage</span>
+    </router-link>
+  </div>
+
+  <div class="links">
+    <navlinks class="can-hide">
 
   
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    <div class="nav-item">
+      <a href="#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="#basics"
+         class="nav-link ">
+         basics
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/romnnn/cookiecutter-pypackage"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
             
-  <div class="section" id="welcome-to-cookiecutter-pypackage-s-documentation">
-<h1>Welcome to cookiecutter-pypackage’s documentation!<a class="headerlink" href="#welcome-to-cookiecutter-pypackage-s-documentation" title="Permalink to this headline">¶</a></h1>
+
+  
+    <div class="nav-item">
+      <a href="#getting-started"
+         class="nav-link ">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="#basics"
+         class="nav-link ">
+         basics
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/romnnn/cookiecutter-pypackage"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Search</span>
+    <div class="searchformwrapper">
+      <form autocomplete="off" class="search" action="search.html" method="get">
+        <input type="text" name="q" autocomplete="off" />
+        <input type="submit" value="Go" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="#getting-started">getting started</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="readme.html" class="reference internal ">Cookiecutter PyPackage (romnnn)</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tutorial.html" class="reference internal ">Tutorial</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="pypi_release_checklist.html" class="reference internal ">PyPI Release Checklist</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="#basics">basics</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="prompts.html" class="reference internal ">Prompts</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="invoke.html" class="reference internal ">Invoke</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="versions.html" class="reference internal ">Version Management</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+    
+    <li>Welcome to romnnn-cookiecutter-pypackage’s documentation!</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="next">
+    <a href="readme.html"
+       title="next chapter">Cookiecutter PyPackage (romnnn) →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <div class="section" id="welcome-to-romnnn-cookiecutter-pypackage-s-documentation">
+<h1>Welcome to romnnn-cookiecutter-pypackage’s documentation!<a class="headerlink" href="#welcome-to-romnnn-cookiecutter-pypackage-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Cookiecutter PyPackage</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Cookiecutter PyPackage (romnnn)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="readme.html#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="readme.html#build-status">Build Status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readme.html#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme.html#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-1-install-cookiecutter">Step 1: Install Cookiecutter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-2-generate-your-package">Step 2: Generate Your Package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-3-create-a-github-repo">Step 3: Create a GitHub Repo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-4-install-dev-requirements">Step 4: Install Dev Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-5-set-up-travis-ci">Step 5: Set Up Travis CI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-6-set-up-readthedocs">Step 6: Set Up ReadTheDocs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-7-set-up-pyup-io">Step 7: Set Up pyup.io</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#step-8-release-on-pypi">Step 8: Release on PyPI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#having-problems">Having problems?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#cookie-step-1-install-cookiecutter">🍪 Step 1: Install Cookiecutter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#package-step-2-generate-your-package">📦 Step 2: Generate Your Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#octopus-step-3-create-a-github-repo">🐙 Step 3: Create a GitHub Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#hammer-and-wrench-step-4-install-development-requirements">🛠 Step 4: Install development requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#tada-step-5-initial-release-to-pypi">🎉 Step 5: Initial release to PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#construction-worker-step-6-set-up-travisci">👷 Step 6: Set up TravisCI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#book-step-7-set-up-readthedocs">📖 Step 7: Set up ReadTheDocs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#pencil-step-8-set-up-github-pages">📝 Step 8: Set up GitHub Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#rotating-light-having-problems">🚨 Having problems?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pypi_release_checklist.html">PyPI Release Checklist</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pypi_release_checklist.html#before-your-first-release">Before Your First Release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pypi_release_checklist.html#for-every-release">For Every Release</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pypi_release_checklist.html#about-this-checklist">About This Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pypi_release_checklist.html#about-this-checklist">About this checklist</a></li>
 </ul>
 </li>
 </ul>
@@ -206,30 +234,12 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="prompts.html">Prompts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="prompts.html#templated-values">Templated Values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prompts.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prompts.html#templated-values">Templated values</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="invoke.html">Invoke</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="advanced-features">
-<h2>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="travis_pypi_setup.html">Travis/PyPI Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="travis_pypi_setup.html#install-the-travis-cli-tool">Install the Travis CLI tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="travis_pypi_setup.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="travis_pypi_setup.html#your-release-process">Your Release Process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="travis_pypi_setup.html#more-details">More Details</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="console_script_setup.html">Console Script Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="console_script_setup.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="console_script_setup.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="console_script_setup.html#known-issues">Known Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="console_script_setup.html#more-details">More Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Version Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="versions.html#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -239,57 +249,30 @@
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="readme.html" class="btn btn-neutral float-right" title="Cookiecutter PyPackage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="next">
+    <a href="readme.html"
+       title="next chapter">Cookiecutter PyPackage (romnnn) →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2020, romnnn.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1 with <a href="https://github.com/romnnn/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2019, Sam Briggs
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
     
-   
-
-</body>
+    
+  </body>
 </html>

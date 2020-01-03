@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-      <title>Invoke</title>
+      <title>Version Management</title>
     
       <link rel="stylesheet" href="_static/pygments.css">
       <link rel="stylesheet" href="_static/theme.css">
@@ -23,8 +23,7 @@
     
   <link rel="index" title="Index" href="genindex.html" />
   <link rel="search" title="Search" href="search.html" />
-  <link rel="next" title="Version Management" href="versions.html" />
-  <link rel="prev" title="Prompts" href="prompts.html" /> 
+  <link rel="prev" title="Invoke" href="invoke.html" /> 
   </head>
 
   <body>
@@ -158,20 +157,20 @@
           </li>
 
         
-          <li class="toctree-l1 current"><a href="#" class="reference internal current">Invoke</a>
+          <li class="toctree-l1 "><a href="invoke.html" class="reference internal ">Invoke</a>
 
-            
-              <ul>
-                
-                  <li class="toctree-l2"><a href="#invoke" class="reference internal">Invoke</a></li>
-                
-              </ul>
             
           </li>
 
         
-          <li class="toctree-l1 "><a href="versions.html" class="reference internal ">Version Management</a>
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Version Management</a>
 
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#examples" class="reference internal">Examples</a></li>
+                
+              </ul>
             
           </li>
 
@@ -188,18 +187,14 @@
   <ul class="breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
     
-    <li>Invoke</li>
+    <li>Version Management</li>
   </ul>
   
 
   <ul class="page-nav">
   <li class="prev">
-    <a href="prompts.html"
-       title="previous chapter">← Prompts</a>
-  </li>
-  <li class="next">
-    <a href="versions.html"
-       title="next chapter">Version Management →</a>
+    <a href="invoke.html"
+       title="previous chapter">← Invoke</a>
   </li>
 </ul>
   
@@ -207,21 +202,42 @@
 <hr>
           <div class="content" role="main">
             
-  <div class="section" id="invoke">
-<h1>Invoke<a class="headerlink" href="#invoke" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This assumes you already installed the development requirements with <code class="docutils literal notranslate"><span class="pre">pipenv</span> <span class="pre">install</span> <span class="pre">--dev</span></code>.</p>
-</div>
-<p>The generated project is ready to run some useful tasks like</p>
-<ul class="simple">
-<li><p>formatting</p></li>
-<li><p>linting</p></li>
-<li><p>testing</p></li>
-</ul>
-<p><a class="reference external" href="http://www.pyinvoke.org/">invoke</a> is used to wrap up the required commands. To see what commands are available, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ invoke --list
+  <div class="section" id="version-management">
+<span id="bump-version-tutorial"></span><h1>Version Management<a class="headerlink" href="#version-management" title="Permalink to this headline">¶</a></h1>
+<p>Whenever you made changes to your package and you want to release a new version to PyPI and GitHub,
+you need to change all version strings in the project and make a tagged commit.</p>
+<p>To make life easier, we use <a class="reference external" href="https://github.com/c4urself/bump2version">bump2version</a> for this.
+This is how releasing a new version looks like:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> bump2version <span class="o">(</span>major <span class="p">|</span> minor <span class="p">|</span> patch<span class="o">)</span>
+<span class="gp">$</span> git push
+<span class="gp">$</span> git push --tags
 </pre></div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Let’s assume the current version is <code class="docutils literal notranslate"><span class="pre">1.3.2</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 66%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>New version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bump2version</span> <span class="pre">major</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2.3.2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bump2version</span> <span class="pre">minor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.4.2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bump2version</span> <span class="pre">patch</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.3.3</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -230,12 +246,8 @@
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
   <li class="prev">
-    <a href="prompts.html"
-       title="previous chapter">← Prompts</a>
-  </li>
-  <li class="next">
-    <a href="versions.html"
-       title="next chapter">Version Management →</a>
+    <a href="invoke.html"
+       title="previous chapter">← Invoke</a>
   </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright 2020, romnnn.

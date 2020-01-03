@@ -1,321 +1,298 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>PyPI Release Checklist &mdash; cookiecutter-pypackage 0.9.0 documentation</title>
-  
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>PyPI Release Checklist</title>
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.9.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <link rel="stylesheet" href="_static/pygments.css">
+      <link rel="stylesheet" href="_static/theme.css">
+      <link rel="stylesheet" href="_static/romnnn_sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Prompts" href="prompts.html" />
-    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home"> cookiecutter-pypackage
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                0.9.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Cookiecutter PyPackage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">PyPI Release Checklist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#before-your-first-release">Before Your First Release</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#for-every-release">For Every Release</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#about-this-checklist">About This Checklist</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="prompts.html">Prompts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="invoke.html">Invoke</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="travis_pypi_setup.html">Travis/PyPI Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="console_script_setup.html">Console Script Setup</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+        <script type="text/javascript" src="_static/language_data.js"></script>
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">cookiecutter-pypackage</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+      <script src="_static/theme-vendors.js"></script>
+      <script src="_static/theme.js" defer></script>
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>PyPI Release Checklist</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="_sources/pypi_release_checklist.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" />
+  <link rel="next" title="Prompts" href="prompts.html" />
+  <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <div class="home-link-container">
+      <router-link to="index.html" class="home-link">
+      
+        <span class="site-name">romnnn-cookiecutter-pypackage</span>
+    </router-link>
+  </div>
+
+  <div class="links">
+    <navlinks class="can-hide">
 
   
-  <hr/>
+    <div class="nav-item">
+      <a href="index.html#getting-started"
+         class="nav-link  router-link-active">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#basics"
+         class="nav-link ">
+         basics
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/romnnn/cookiecutter-pypackage"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="index.html#getting-started"
+         class="nav-link  router-link-active">
+         getting started
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#basics"
+         class="nav-link ">
+         basics
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/romnnn/cookiecutter-pypackage"
+        class="nav-link external">
+          Github <outboundlink/>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Search</span>
+    <div class="searchformwrapper">
+      <form autocomplete="off" class="search" action="search.html" method="get">
+        <input type="text" name="q" autocomplete="off" />
+        <input type="submit" value="Go" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#getting-started">getting started</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="readme.html" class="reference internal ">Cookiecutter PyPackage (romnnn)</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="tutorial.html" class="reference internal ">Tutorial</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">PyPI Release Checklist</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#before-your-first-release" class="reference internal">Before Your First Release</a></li>
+                
+                  <li class="toctree-l2"><a href="#for-every-release" class="reference internal">For Every Release</a></li>
+                
+                  <li class="toctree-l2"><a href="#about-this-checklist" class="reference internal">About this checklist</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#basics">basics</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="prompts.html" class="reference internal ">Prompts</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="invoke.html" class="reference internal ">Invoke</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="versions.html" class="reference internal ">Version Management</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>PyPI Release Checklist</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="tutorial.html"
+       title="previous chapter">← Tutorial</a>
+  </li>
+  <li class="next">
+    <a href="prompts.html"
+       title="next chapter">Prompts →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
             
   <div class="section" id="pypi-release-checklist">
 <h1>PyPI Release Checklist<a class="headerlink" href="#pypi-release-checklist" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="before-your-first-release">
-<h2>Before Your First Release<a class="headerlink" href="#before-your-first-release" title="Permalink to this headline">¶</a></h2>
+<span id="release-checklist"></span><h2>Before Your First Release<a class="headerlink" href="#before-your-first-release" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Register the package on PyPI:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py register
+<li><p>Register the package on PyPI:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py register
 </pre></div>
 </div>
-</div></blockquote>
 </li>
-<li><p class="first">Visit PyPI to make sure it registered.</p>
-</li>
+<li><p>Visit PyPI to make sure it registered.</p></li>
 </ol>
 </div>
 <div class="section" id="for-every-release">
 <h2>For Every Release<a class="headerlink" href="#for-every-release" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Update HISTORY.rst</p>
-</li>
-<li><p class="first">Commit the changes:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add HISTORY.rst
-git commit -m <span class="s2">&quot;Changelog for upcoming release 0.1.1.&quot;</span>
+<li><p>Run the tests to make sure everything works:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> invoke pre-commit
+<span class="gp">$</span> tox
 </pre></div>
 </div>
-</div></blockquote>
 </li>
-<li><p class="first">Update version number (can also be patch or major)</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bumpversion minor
+<li><p>Commit your changes</p></li>
+<li><p>Update version number (see <a class="reference internal" href="versions.html#bump-version-tutorial"><span class="std std-ref">here</span></a> for more details):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> bump2version <span class="o">(</span>major <span class="p">|</span> minor <span class="p">|</span> patch<span class="o">)</span>
 </pre></div>
 </div>
-</div></blockquote>
 </li>
-<li><p class="first">Install the package again for local development, but with the new version number:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py develop
+<li><p>Push the commit and tags. This will create a new release on both GitHub and PyPI:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git push
+<span class="gp">$</span> git push --tags
 </pre></div>
 </div>
-</div></blockquote>
 </li>
-<li><p class="first">Run the tests:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tox
+<li><p>Check the package on PyPI and make sure that the <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> is displayed properly.
+If not, try one of these:</p>
+<ul>
+<li><p>Copy and paste the RestructuredText into <a class="reference external" href="http://rst.ninjs.org/">http://rst.ninjs.org/</a> to find out what broke the formatting.</p></li>
+<li><p>Check your long_description locally:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install readme_renderer
+<span class="gp">$</span> python setup.py check -r -s
 </pre></div>
 </div>
-</div></blockquote>
 </li>
-<li><p class="first">Push the commit:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push
-</pre></div>
-</div>
-</div></blockquote>
+</ul>
 </li>
-<li><p class="first">Push the tags, creating the new release on both GitHub and PyPI:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push --tags
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p class="first">Check the PyPI listing page to make sure that the README, release notes, and roadmap display properly. If not, try one of these:</p>
-<blockquote>
-<div><ol class="arabic">
-<li><p class="first">Copy and paste the RestructuredText into <a class="reference external" href="http://rst.ninjs.org/">http://rst.ninjs.org/</a> to find out what broke the formatting.</p>
-</li>
-<li><p class="first">Check your long_description locally:</p>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install readme_renderer
-python setup.py check -r -s
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ol>
-</div></blockquote>
-</li>
-<li><p class="first">Edit the release on GitHub (e.g. <a class="reference external" href="https://github.com/audreyr/cookiecutter/releases">https://github.com/audreyr/cookiecutter/releases</a>). Paste the release notes into the release’s release page, and come up with a title for the release.</p>
-</li>
+<li><p>Edit the release on GitHub at <a class="reference external" href="https://github.com/myusername/mypackage/releases">https://github.com/myusername/mypackage/releases</a>.
+Paste the release notes into the release’s release page, and come up with a title for the release.</p></li>
 </ol>
 </div>
 <div class="section" id="about-this-checklist">
-<h2>About This Checklist<a class="headerlink" href="#about-this-checklist" title="Permalink to this headline">¶</a></h2>
+<h2>About this checklist<a class="headerlink" href="#about-this-checklist" title="Permalink to this headline">¶</a></h2>
 <p>This checklist is adapted from:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://gist.github.com/audreyr/5990987">https://gist.github.com/audreyr/5990987</a></li>
-<li><a class="reference external" href="https://gist.github.com/audreyr/9f1564ea049c14f682f4">https://gist.github.com/audreyr/9f1564ea049c14f682f4</a></li>
+<li><p><a class="reference external" href="https://gist.github.com/audreyr/5990987">https://gist.github.com/audreyr/5990987</a></p></li>
+<li><p><a class="reference external" href="https://gist.github.com/audreyr/9f1564ea049c14f682f4">https://gist.github.com/audreyr/9f1564ea049c14f682f4</a></p></li>
 </ul>
-<p>It assumes that you are using all features of Cookiecutter PyPackage.</p>
 </div>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="prompts.html" class="btn btn-neutral float-right" title="Prompts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="tutorial.html"
+       title="previous chapter">← Tutorial</a>
+  </li>
+  <li class="next">
+    <a href="prompts.html"
+       title="next chapter">Prompts →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2020, romnnn.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1 with <a href="https://github.com/romnnn/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2019, Sam Briggs
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
     
-   
-
-</body>
+    
+  </body>
 </html>
