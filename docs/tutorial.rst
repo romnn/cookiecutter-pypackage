@@ -173,6 +173,8 @@ The website will be available at `<https://myusername.github.io/mypackage/>`_.
 The default ``deploy pages`` stage in your ``.travis.yml`` will publish your documentation to GitHub Pages (the same as on ReadTheDocs), but you might deploy a different website for your project.
 
 
+.. _GitHub Pages: https://pages.github.com/
+
 |:rotating_light:| Having problems?
 -----------------------------------
 
