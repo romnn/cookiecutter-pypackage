@@ -1,7 +1,7 @@
 Tutorial
 ========
 
-.. note:: Did you find any of these instructions confusing? `Edit this file`_
+.. note:: Do you find any of these instructions confusing? `Edit this file`_
           and submit a pull request with your improvements!
 
 .. _`Edit this file`: https://github.com/romnnn/cookiecutter-pypackage/blob/master/docs/tutorial.rst
@@ -12,50 +12,9 @@ To start with, you will need a `GitHub account`_ and an account on `PyPI`_. Crea
 .. _`PyPI`: https://pypi.python.org/pypi
 .. _`GitHub Help`: https://help.github.com/
 
-Quickstart
-----------
 
-* Add the repo to your `Travis-CI`_ account (if you have connected travis with GitHub this happens automatically).
-* `Install the Travis CLI`_ and run::
-
-    $ travis encrypt <your-api-token> --add deploy.password         # When using travis.org
-    $ travis encrypt <your-api-token> --add deploy.password --com   # When using travis.com
-
-  to automatically encrypt your PyPI token into your ``.travis.yml`` config.
-  You will most likely still need to manually edit the ``.travis.yml`` file because the token is appended
-  outside of any build stage.
-
-* Add the repo to your ReadTheDocs_ account and enable the service hook.
-* If you wish to also publish your documentation on `GitHub Pages`_,
-  `generate a GitHub access token <https://github.com/settings/tokens>`_ for `public_repo` and set this
-  token in your travis build settings at `<https://travis-ci.com/myusername/mypackage/settings>`_
-  as a secret environment variable ``GH_TOKEN``.
-
-  If you do not want to deploy to `GitHub Pages`_, remove the ``deploy pages`` build stage from ``.travis.yml``.
-* Make an initial release of your package to PyPI_. You will be asked for your credentials::
-
-    $ pip install twine
-    $ python setup.py sdist
-    $ twine upload dist/*
-
-* Get a deployment token for your package on PyPI_.
-* Start coding! Add your package dependencies to your ``setup.py`` and ``Pipfile`` as you go,
-  and lock them into your virtual environment with::
-
-  $ pipenv install --dev
-
-* Release new versions of your package by pushing a new tag to master::
-
-    $ bump2version (major | minor | patch)
-    $ git push origin master
-    $ git push --tags origin master
-
-.. _Install the Travis CLI: https://github.com/travis-ci/travis.rb#installation
-.. _GitHub Pages: https://pages.github.com/
-
-
-Step 1: Install Cookiecutter
-----------------------------
+Step 1: Install Cookiecutter |:cookie:|
+---------------------------------------
 
 Install ``cookiecutter>=1.4.0``:
 
@@ -70,8 +29,8 @@ We'll also need ``pipenv`` so install that too:
     $ pip install pipenv
 
 
-Step 2: Generate Your Package
------------------------------
+Step 2: Generate Your Package |:package:|
+-----------------------------------------
 
 Now it's time to generate your Python package.
 
@@ -85,8 +44,8 @@ You'll be asked to enter a bunch of values to set the package up.
 If you don't know what to enter, stick with the defaults.
 
 
-Step 3: Create a GitHub Repo
-----------------------------
+Step 3: Create a GitHub Repo |:octocat:|
+----------------------------------------
 
 Go to your GitHub account and create a new repo named ``mypackage``, where ``mypackage`` matches the ``[project_slug]`` from your answers to running cookiecutter.
 This is so that Travis CI can find it when we get to Step 5.
@@ -111,8 +70,8 @@ You can `Generate`_ a key or `Add`_ an existing one.
 .. _`Generate`: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 .. _`Add`: https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 
-Step 4: Install development requirements
-----------------------------------------
+Step 4: Install development requirements |:hammer_and_wrench:|
+--------------------------------------------------------------
 
 You should still be in the folder containing the ``Pipfile`` file.
 
@@ -122,8 +81,8 @@ Install the new project's local development requirements inside a virtual enviro
 
     $ pipenv install --dev
 
-Step 5: Initial release to PyPI
--------------------------------
+Step 5: Initial release to PyPI |:tada:|
+----------------------------------------
 
 The Python Package Index or `PyPI`_ is the official third-party software repository for the Python programming language.
 Python developers intend it to be a comprehensive catalog of all open source Python packages.
@@ -144,8 +103,8 @@ When you are ready, upload your package:
 
 If everything goes well, your package should be online.
 
-Step 6: Set up TravisCI
-------------------------
+Step 6: Set up TravisCI |:construction_worker:|
+-----------------------------------------------
 
 `Travis-CI`_ [*]_ is a continuous integration tool used to prevent integration problems.
 Every commit to the master branch will trigger automated builds of the application.
@@ -181,8 +140,8 @@ outside of any build stage.
 .. _the installation guide: https://github.com/travis-ci/travis.rb#installation
 
 
-Step 7: Set up ReadTheDocs
---------------------------
+Step 7: Set up ReadTheDocs |:book:|
+-----------------------------------
 
 `ReadTheDocs`_ hosts documentation for the open source community.
 Think of it as Continuous Documentation.
@@ -197,8 +156,8 @@ Now your documentation will get rebuilt when you make changes to your package's 
 
 .. _`ReadTheDocs`: https://readthedocs.org/
 
-Step 8: Set up GitHub Pages
----------------------------
+Step 8: Set up GitHub Pages |:pencil:|
+--------------------------------------
 
 `GitHub Pages`_ is a service offered by GitHub that will host a static website along with your package for free.
 Per default, GitHub Pages uses `jekyll <https://jekyllrb.com/>`_ for templating, but you can use any other tool as long as it generated static html (we will be using it with ``Sphinx``).
@@ -214,8 +173,8 @@ The website will be available at `<https://myusername.github.io/mypackage/>`_.
 The default ``deploy pages`` stage in your ``.travis.yml`` will publish your documentation to GitHub Pages (the same as on ReadTheDocs), but you might deploy a different website for your project.
 
 
-Having problems?
-----------------
+Having problems? |:rotating_light:|
+-----------------------------------
 
 Visit our :ref:`troubleshooting` page for help.
 If that doesn't help, `create an issue`_.

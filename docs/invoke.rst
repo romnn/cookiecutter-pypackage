@@ -1,6 +1,8 @@
 Invoke
 ======
 
+..  note:: This assumes you already installed the development requirements with ``pipenv install --dev``.
+
 The generated project is ready to run some useful tasks like
 
 * formatting
@@ -11,6 +13,5 @@ invoke_ is used to wrap up the required commands. To see what commands are avail
 
     $ invoke --list
 
-..  note:: This assumes you already installed the development requirements with ``pipenv install --dev``.
 
 .. _invoke: http://www.pyinvoke.org/
