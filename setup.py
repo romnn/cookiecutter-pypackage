@@ -2,12 +2,22 @@
 
 from setuptools import setup
 
-dev_requirements = ["pytest", "pytest-cookies", "cookiecutter", "tox", "invoke", "pyyaml", "pre-commit"]
+test_requirements = [
+    "tox",
+    "pytest",
+    "pytest-cov",
+    "pytest-cookies",
+    "pytest-xdist",
+    "pytest-sugar",
+]
+coverage_requirements = ["coverage", "codecov"]
 docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme", "sphinxemoji"]
+dev_requirements = ["invoke", "pre-commit", "cookiecutter"]
 
 setup(
     name="romnnn-cookiecutter-pypackage",
     packages=[],
+    python_requires=">=3.6",
     version="0.1.0",
     description="Cookiecutter template for a python package",
     author="romnnn",
@@ -15,10 +25,14 @@ setup(
     author_email="contact@romnn.com",
     url="https://github.com/romnnn/cookiecutter-pypackage",
     keywords=["cookiecutter", "template", "package"],
-    extras_require={
-        'dev': docs_requirements + dev_requirements,
-        'docs': docs_requirements,
-    },
+    extras_require=dict(
+        dev=dev_requirements
+        + docs_requirements
+        + test_requirements
+        + coverage_requirements,
+        docs=docs_requirements,
+        test=test_requirements + coverage_requirements,
+    ),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Console",

@@ -4,23 +4,30 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-invoke = "*"
-m2r = "*"
-bump2version = "*"
-tox = "*"
-sphinx = "*"
+# Docs
+sphinx = ">=2.0"
 romnnn_sphinx_press_theme = "*"
 sphinxemoji = "*"
+# Formatting
 flake8 = "*"
+black = "==19.10b0"
+isort = "*"
+# Testing
+tox = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
-coverage = "*"
-isort = "*"
 mypy = "*"
+# Coverage
+coverage = "*"
+codecov = "*"
+# Tools
 pre-commit = "*"
-black = "==19.10b0"
+invoke = "*"
+m2r = "*"
+twine = "*"
+bump2version = "*"
 
 [packages]
 {{cookiecutter.project_slug}} = {path = ".", editable = true}

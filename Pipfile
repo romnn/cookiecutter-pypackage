@@ -4,18 +4,24 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-invoke = "*"
+# Testing
 tox = "*"
-cookiecutter = "*"
 pytest = "*"
+pytest-cov = "*"
 pytest-cookies = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
+# Coverage
+coverage = "*"
+codecov = "*"
+# Docs
 sphinx = ">=2.0"
-pyyaml = "*"
-pre-commit = "*"
 romnnn_sphinx_press_theme = "*"
 sphinxemoji = "*"
+# Tools
+invoke = "*"
+pre-commit = "*"
+cookiecutter = "*"
 
 [packages]
 

@@ -22,11 +22,33 @@ except (ImportError, AssertionError):
     long_description = short_description
 
 requirements = ["Click>=6.0"]
-setup_requirements = ["pytest-runner"]
-test_requirements = ["pytest", "pre-commit"]
-docs_requirements = ["sphinxemoji", "sphinx>=2.0", "romnnn_sphinx_press_theme"]
+test_requirements = [
+    "tox",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "pytest-sugar",
+    "mypy",
+    "codecov",
+]
+coverage_requirements = ["coverage", "codecov"]
+docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme", "sphinxemoji"]
+formatting_requirements = ["flake8", "black==19.10b0", "isort"]
+tool_requirements = [
+    "m2r",
+    "twine",
+    "invoke",
+    "pre-commit",
+    "cookiecutter",
+    "bump2version",
+]
 dev_requirements = (
-    ["m2r", "twine"] + setup_requirements + test_requirements + docs_requirements
+    requirements
+    + test_requirements
+    + coverage_requirements
+    + docs_requirements
+    + formatting_requirements
+    + tool_requirements
 )
 
 setup(
@@ -51,9 +73,14 @@ setup(
             "{{ cookiecutter.project_slug }}={{ cookiecutter.project_slug }}.cli:main"
         ]
     },
+    python_requires=">=3.6",
     install_requires=requirements,
+    setup_requires=tool_requirements,
+    tests_require=test_requirements,
+    extras_require=dict(
+        dev=dev_requirements, docs=docs_requirements, test=test_requirements
+    ),
     license="MIT",
-    python_requires=">=3.5",
     description=short_description,
     long_description=long_description,
     include_package_data=True,
@@ -61,12 +88,7 @@ setup(
     keywords="{{ cookiecutter.project_slug }}",
     name="{{ cookiecutter.project_slug }}",
     packages=find_packages(include=["{{ cookiecutter.project_slug }}"]),
-    setup_requires=setup_requirements,
     test_suite="tests",
-    tests_require=test_requirements,
-    extras_require=dict(
-        dev=dev_requirements, docs=docs_requirements
-    ),
     url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
     version="{{ cookiecutter.version }}",
     zip_safe=False,
