@@ -15,6 +15,7 @@ sphinx = ">=2.0"
 pyyaml = "*"
 pre-commit = "*"
 romnnn_sphinx_press_theme = "*"
+sphinxemoji = "*"
 
 [packages]
 
