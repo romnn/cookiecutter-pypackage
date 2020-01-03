@@ -3,13 +3,37 @@ import os
 import time
 import subprocess
 
+
+class _Halo:
+    def __init__(self, *args, **kwargs):
+        self.text = kwargs.get("text", "")
+
+    def __enter__(self):
+        print(self.text)
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
+    @staticmethod
+    def _print(text):
+        print(text)
+
+    fail = succeed = _print
+
+
 try:
     from halo import Halo
 except (ImportError, ModuleNotFoundError):
     subprocess.check_output(
-        "python3 -m pip install halo", stderr=subprocess.STDOUT, shell=True
+        "pip install halo", stderr=subprocess.STDOUT, shell=True
     )
+
+try:
     from halo import Halo
+except Exception:
+    print("Failed to install progress spinners. Will fall back to plain text.")
+    Halo = _Halo
 
 
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
