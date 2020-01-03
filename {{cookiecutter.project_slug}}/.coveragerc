@@ -1,5 +1,10 @@
 [run]
 source = {{cookiecutter.project_slug}}
+omit =
+    .tox
+    tests
+    tasks.py
+    setup.py
 
 [report]
 exclude_lines =
