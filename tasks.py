@@ -22,13 +22,16 @@ def test(c):
     c.run("pytest", pty=pty)
 
 
-@task
-def docs(c):
+@task(help={'output': "Generated documentation output format (default is html)"})
+def docs(c, output="html"):
+    """Generate documentation
     """
-    Generate documentation
-    """
-    c.run("sphinx-build -b html {} {}".format(DOCS_DIR, DOCS_BUILD_DIR))
-    webbrowser.open(DOCS_INDEX.absolute().as_uri())
+    c.run("sphinx-apidoc -o {} .".format(DOCS_DIR))
+    c.run("sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
+    if output.lower() == "html":
+        webbrowser.open(DOCS_INDEX.as_uri())
+    elif output.lower() == "latex":
+        c.run("cd {} && make".format(DOCS_BUILD_DIR))
 
 
 @task
