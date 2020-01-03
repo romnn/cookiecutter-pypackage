@@ -28,10 +28,10 @@ def install_git_hooks():
     with Halo(text="Installing git hooks", spinner="dots", color="cyan") as spinner:
         try:
             run_command(
-                "pre-commit install -t pre-commit", stderr=subprocess.STDOUT, shell=True
+                "pipenv run pre-commit install -t pre-commit", stderr=subprocess.STDOUT, shell=True
             )
             run_command(
-                "pre-commit install -t pre-push", stderr=subprocess.STDOUT, shell=True
+                "pipenv run pre-commit install -t pre-push", stderr=subprocess.STDOUT, shell=True
             )
             time.sleep(0.5)
         except Exception:
