@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-dev_requirements = ["pytest", "pytest-cookies", "cookiecutter", "tox", "invoke", "pyyaml"]
+dev_requirements = ["pytest", "pytest-cookies", "cookiecutter", "tox", "invoke", "pyyaml", "pre-commit"]
 docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme"]
 
 setup(

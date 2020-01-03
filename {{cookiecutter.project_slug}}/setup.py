@@ -25,7 +25,7 @@ requirements = ["Click>=6.0"]
 setup_requirements = ["pytest-runner"]
 test_requirements = ["pytest"]
 dev_requirements = (
-    ["m2r", "twine", "sphinxemoji", "sphinx"] + setup_requirements + test_requirements
+    ["m2r", "twine", "sphinxemoji", "sphinx", "pre-commit"] + setup_requirements + test_requirements
 )
 
 setup(
