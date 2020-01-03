@@ -1,5 +1,5 @@
 Welcome to romnnn-cookiecutter-pypackage's documentation!
-==================================================
+==========================================================
 
 Getting Started
 ---------------

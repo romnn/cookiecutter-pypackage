@@ -35,11 +35,7 @@ needs_sphinx = '2.0'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
     'sphinxemoji.sphinxemoji',
 ]
 
@@ -111,10 +107,6 @@ pygments_style = None
 
 # If true, keep warnings as "system message" paragraphs in the built documents.
 #keep_warnings = False
-
-# If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
-
 
 # -- Options for HTML output -------------------------------------------
 

@@ -23,7 +23,7 @@ For Every Release
     $ tox
 
 #. Commit your changes
-#. Update version number (see :ref:`bump-version-tutorial` for more details)::
+#. Update version number (see :ref:`here <bump-version-tutorial>` for more details)::
 
     $ bump2version (major | minor | patch)
 

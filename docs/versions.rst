@@ -1,9 +1,9 @@
 .. highlight:: console
 
+.. _bump-version-tutorial:
+
 Version Management
 ==================
-
-.. _`bump-version-tutorial`:
 
 Whenever you made changes to your package and you want to release a new version to PyPI and GitHub,
 you need to change all version strings in the project and make a tagged commit.
