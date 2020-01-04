@@ -311,8 +311,11 @@ Now get a deployment token for your package on PyPI. It is advised to restrict t
 <li><p>Encrypt your deployment token in your <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> config</p></li>
 <li><p>Activate automated deployment on PyPI when you push a new tag to master branch.</p></li>
 </ul>
-<p>You will most likely still need to manually edit the <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> file because the token is appended
-outside of any build stage.</p>
+<p>Because the token is appended outside of any build stage,
+you still need to manually edit the <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> config or run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> invoke fix-token
+</pre></div>
+</div>
 <dl class="footnote brackets">
 <dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">*</a></span></dt>
 <dd><p>For private projects go to <a class="reference external" href="https://travis-ci.com/">travis-ci.com</a>, for public ones go to <a class="reference external" href="https://travis-ci.org/">travis-ci.org</a> has been a thing.

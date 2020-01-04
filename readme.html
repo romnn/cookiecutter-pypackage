@@ -259,7 +259,7 @@ to my personal needs and modified for ease of use and simplicity.</p>
 <div class="section" id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
 <p>Install <code class="docutils literal notranslate"><span class="pre">cookiecutter&gt;=1.4.0</span></code> if you haven’t already:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install -u cookiecutter
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install -U cookiecutter
 </pre></div>
 </div>
 <p>Generate your python project (you will be asked for the project name etc):</p>
@@ -277,9 +277,17 @@ to my personal needs and modified for ease of use and simplicity.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Install the development requirements into a virtual environment with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pipenv install --dev
+<li><p>Activate the project’s virtual environment with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pipenv shell
 </pre></div>
+</div>
+<p>When your environment is active, you should see the name of your package in your command prompt.</p>
+<p>If you receive an error <code class="docutils literal notranslate"><span class="pre">Shell</span> <span class="pre">for</span> <span class="pre">UNKNOWN_VIRTUAL_ENVIRONMENT</span> <span class="pre">already</span> <span class="pre">activated.</span></code>,
+it is likely that you are inside another shell that has been started sometime ago.
+Run <code class="docutils literal notranslate"><span class="pre">exit</span></code> and try again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you are done working on this project, run <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> to deactivate the environment.</p>
 </div>
 </li>
 <li><p>Make an initial release of your package to <a class="reference external" href="https://pypi.org">PyPI</a>. You will be asked for your credentials:</p>
@@ -289,16 +297,20 @@ to my personal needs and modified for ease of use and simplicity.</p>
 </pre></div>
 </div>
 </li>
-<li><p>Get a deployment token for your package on <a class="reference external" href="https://pypi.org">PyPI</a>.</p></li>
+<li><p>Get a deployment token for your package on <a class="reference external" href="https://pypi.org">PyPI</a> under <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">&gt;</span> <span class="pre">Settings</span> <span class="pre">&gt;</span> <span class="pre">Create</span> <span class="pre">token</span></code>.
+It is good practice to use your package name as the token description and restrict access to only this package.Make sure to copy to copy the token as we will use it in the next steps.</p></li>
 <li><p>Add the repo to your <a class="reference external" href="https://travis-ci.com">Travis-CI</a> account. If you have connected travis with GitHub this is done automatically.</p></li>
 <li><p><a class="reference external" href="https://github.com/travis-ci/travis.rb#installation">Install the Travis CLI</a> and run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> travis encrypt &lt;your-token&gt; --add deploy.password         <span class="c1"># When using travis.org</span>
 <span class="gp">$</span> travis encrypt &lt;your-token&gt; --add deploy.password --com   <span class="c1"># When using travis.com</span>
 </pre></div>
 </div>
-<p>to automatically encrypt your PyPI token into your <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> config.
-You will most likely still need to manually edit the <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> file because the token is appended
-outside of any build stage.</p>
+<p>to automatically encrypt your PyPI token into your <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> config.</p>
+<p>Unfortunately, the travis cli tool appends the token outside of any build stage,
+so you need to manually edit the <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> config or run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> invoke fix-token
+</pre></div>
+</div>
 </li>
 <li><p>Add the repo to your <a class="reference external" href="https://readthedocs.org/">ReadTheDocs</a> account and enable the service hook.</p></li>
 <li><p>If you wish to also publish your documentation on <a class="reference external" href="https://pages.github.com/">GitHub Pages</a>,

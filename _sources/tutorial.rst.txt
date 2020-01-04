@@ -128,8 +128,12 @@ This will:
 * Encrypt your deployment token in your ``.travis.yml`` config
 * Activate automated deployment on PyPI when you push a new tag to master branch.
 
-You will most likely still need to manually edit the ``.travis.yml`` file because the token is appended
-outside of any build stage.
+Because the token is appended outside of any build stage,
+you still need to manually edit the ``.travis.yml`` config or run:
+
+.. code-block:: console
+
+    $ invoke fix-token
 
 .. [*] For private projects go to `travis-ci.com`_, for public ones go to `travis-ci.org`_ has been a thing.
        But afaik all projects should use `travis-ci.com`_ as of now.
