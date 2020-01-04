@@ -4,10 +4,13 @@ Tasks for maintaining the project.
 Execute 'invoke --list' for guidance on using Invoke
 """
 import shutil
+import oyaml as yaml
+import pprint
 
 from invoke import task
 import webbrowser
 from pathlib import Path
+
 Path().expanduser()
 
 ROOT_DIR = Path(__file__).parent
@@ -15,6 +18,7 @@ SETUP_FILE = ROOT_DIR.joinpath("setup.py")
 TEST_DIR = ROOT_DIR.joinpath("tests")
 SOURCE_DIR = ROOT_DIR.joinpath("{{ cookiecutter.project_slug }}")
 TOX_DIR = ROOT_DIR.joinpath(".tox")
+TRAVIS_CONFIG_FILE = ROOT_DIR.joinpath(".travis.yml")
 COVERAGE_FILE = ROOT_DIR.joinpath(".coverage")
 COVERAGE_DIR = ROOT_DIR.joinpath("htmlcov")
 COVERAGE_REPORT = COVERAGE_DIR.joinpath("index.html")
@@ -35,14 +39,14 @@ def _delete_file(file):
             pass
 
 
-@task(help={'check': "Checks if source is formatted without applying changes"})
+@task(help={"check": "Checks if source is formatted without applying changes"})
 def format(c, check=False):
     """Format code
     """
     python_dirs_string = " ".join(PYTHON_DIRS)
-    black_options = '--diff' if check else ''
+    black_options = "--diff" if check else ""
     c.run("pipenv run black {} {}".format(black_options, python_dirs_string))
-    isort_options = '--recursive {}'.format('--check-only' if check else '')
+    isort_options = "--recursive {}".format("--check-only" if check else "")
     c.run("pipenv run isort {} {}".format(isort_options, python_dirs_string))
 
 
@@ -57,7 +61,7 @@ def lint(c):
 def test(c, min_coverage=None):
     """Run tests
     """
-    pytest_options = '--cov-fail-under={}'.format(min_coverage) if min_coverage else ''
+    pytest_options = "--cov-fail-under={}".format(min_coverage) if min_coverage else ""
     c.run("pipenv run pytest --cov={} {}".format(SOURCE_DIR, pytest_options))
 
 
@@ -66,6 +70,99 @@ def type_check(c):
     """Check types
     """
     c.run("pipenv run mypy")
+
+
+def _create(d, *keys):
+    current = d
+    for key in keys:
+        try:
+            current = current[key]
+        except (TypeError, KeyError):
+            current[key] = dict()
+            current = current[key]
+
+
+def _fix_token(config_file=None, force=False, verify=True):
+    config_file = config_file or TRAVIS_CONFIG_FILE
+    with open(config_file, "r") as _file:
+        try:
+            travis_config = yaml.safe_load(_file)
+        except yaml.YAMLError:
+            raise ValueError(
+                "Failed to parse the travis configuration. "
+                "Make sure the config only contains valid YAML and keys as specified by travis."
+            )
+
+        # Get the generated token from the top level deploy config added by the travis cli
+        try:
+            real_token = travis_config["deploy"]["password"]["secure"]
+        except (TypeError, KeyError):
+            raise AssertionError("Can't find any top level deployment tokens")
+
+        try:
+            # Find the build stage that deploys to PyPI
+            pypy_stages = [
+                stage
+                for stage in travis_config["jobs"]["include"]
+                if stage.get("deploy", dict()).get("provider") == "pypi"
+            ]
+            assert (
+                len(pypy_stages) > 0
+            ), "Can't set the new token because there are no stages deploying to PyPI"
+            assert (
+                len(pypy_stages) < 2
+            ), "Can't set the new token because there are multiple stages deploying to PyPI"
+        except (TypeError, KeyError):
+            raise AssertionError("Can't set the new token because there no build stages")
+
+        try:
+            is_mock_token = pypy_stages[0]["deploy"]["password"]["secure"] == "REPLACE_ME"
+            is_same_token = pypy_stages[0]["deploy"]["password"]["secure"] == real_token
+
+            unmodified = is_mock_token or is_same_token
+        except (TypeError, KeyError):
+            unmodified = False
+
+        # Set the new generated token as the stages deploy token
+        _create(pypy_stages[0], "deploy", "password", "secure")
+        pypy_stages[0]["deploy"]["password"]["secure"] = real_token
+
+        # Make sure it is fine to overwrite the config file
+        assert unmodified or force, (
+            'The secure token in the "{}" stage has already been changed. '
+            "Retry with --force if you are sure about replacing it.".format(
+                pypy_stages[0].get("stage", "PyPI deployment")
+            )
+        )
+
+        # Remove the top level deploy config added by the travis cli
+        travis_config.pop("deploy")
+
+        if not unmodified and verify:
+            pprint.pprint(travis_config)
+            if (
+                not input("Do you want to save this configuration? (y/n) ")
+                .strip()
+                .lower()
+                == "y"
+            ):
+                return
+
+    # Save the new travis config
+    assert travis_config
+    with open(config_file, "w") as _file:
+        yaml.dump(travis_config, _file, default_flow_style=False)
+
+
+@task(help=dict(
+    force="Force overriding the current travis configuration",
+    verify="Verify config changes by asking for the user's approval"
+))
+def fix_token(c, force=False, verify=True):
+    """
+    Add the token generated by the travis cli script to the correct entry
+    """
+    _fix_token(force=force, verify=verify)
 
 
 @task
@@ -83,10 +180,13 @@ def pre_commit(c):
     c.run("pipenv run pre-commit run --all-files")
 
 
-@task(pre=[test], help=dict(
-    publish="Publish the result (default False)",
-    provider="The provider to publish (default codecov)"
-))
+@task(
+    pre=[test],
+    help=dict(
+        publish="Publish the result (default False)",
+        provider="The provider to publish (default codecov)",
+    ),
+)
 def coverage(c, publish=False, provider="codecov"):
     """Create coverage report
     """
@@ -99,12 +199,20 @@ def coverage(c, publish=False, provider="codecov"):
         webbrowser.open(COVERAGE_REPORT.as_uri())
 
 
-@task(help={'output': "Generated documentation output format (default is html)"})
+@task(help={"output": "Generated documentation output format (default is html)"})
 def docs(c, output="html"):
     """Generate documentation
     """
-    c.run("pipenv run sphinx-apidoc -o {} {{ cookiecutter.project_slug }}".format(DOCS_DIR))
-    c.run("pipenv run sphinx-build -b {} {} {}".format(output.lower(), DOCS_DIR, DOCS_BUILD_DIR))
+    c.run(
+        "pipenv run sphinx-apidoc -o {} {{ cookiecutter.project_slug }}".format(
+            DOCS_DIR
+        )
+    )
+    c.run(
+        "pipenv run sphinx-build -b {} {} {}".format(
+            output.lower(), DOCS_DIR, DOCS_BUILD_DIR
+        )
+    )
     if output.lower() == "html":
         webbrowser.open(DOCS_INDEX.as_uri())
     elif output.lower() == "latex":
