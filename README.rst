@@ -65,7 +65,7 @@ Quickstart
 
 Install ``cookiecutter>=1.4.0`` if you haven't already::
 
-    $ pip install -u cookiecutter
+    $ pip install -U cookiecutter
 
 Generate your python project (you will be asked for the project name etc)::
 
@@ -81,9 +81,19 @@ After your project was created:
     $ git commit -m "Initial commit"
     $ git push origin master
 
-* Install the development requirements into a virtual environment with::
+* Activate the project's virtual environment with::
 
-    $ pipenv install --dev
+    $ pipenv shell
+
+  When your environment is active, you should see the name of your package in your command prompt.
+
+  If you receive an error ``Shell for UNKNOWN_VIRTUAL_ENVIRONMENT already activated.``,
+  it is likely that you are inside another shell that has been started sometime ago.
+  Run ``exit`` and try again.
+
+  .. warning:: When you are done working on this project, run ``deactivate`` to deactivate the environment.
+
+
 
 * Make an initial release of your package to PyPI_. You will be asked for your credentials::
 
@@ -91,7 +101,9 @@ After your project was created:
     $ python setup.py sdist
     $ twine upload dist/*
 
-* Get a deployment token for your package on PyPI_.
+* Get a deployment token for your package on PyPI_ under ``Manage > Settings > Create token``.
+  It is good practice to use your package name as the token description and restrict access to only this package.\
+  Make sure to copy to copy the token as we will use it in the next steps.
 * Add the repo to your `Travis-CI`_ account. If you have connected travis with GitHub this is done automatically.
 * `Install the Travis CLI`_ and run::
 
@@ -99,8 +111,11 @@ After your project was created:
     $ travis encrypt <your-token> --add deploy.password --com   # When using travis.com
 
   to automatically encrypt your PyPI token into your ``.travis.yml`` config.
-  You will most likely still need to manually edit the ``.travis.yml`` file because the token is appended
-  outside of any build stage.
+
+  Unfortunately, the travis cli tool appends the token outside of any build stage,
+  so you need to manually edit the ``.travis.yml`` config or run::
+
+    $ invoke fix-token
 
 * Add the repo to your ReadTheDocs_ account and enable the service hook.
 * If you wish to also publish your documentation on `GitHub Pages`_,
