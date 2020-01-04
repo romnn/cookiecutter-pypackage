@@ -1,20 +1,24 @@
 import datetime
+import importlib.util
+import json
 import os
 import shlex
 import subprocess
-import sys
 from contextlib import contextmanager
 
-import yaml
-import json
+import oyaml as yaml
 from click.testing import CliRunner
 from cookiecutter.utils import rmtree
 
-import importlib
-
 dir_path = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(dir_path, "../cookiecutter.json")) as cookiecutter_config_file:
-    default_package_name = json.load(cookiecutter_config_file).get("project_name", "Python Package Template").lower().replace(' ', '_').replace('-', '_')
+    default_package_name = (
+        json.load(cookiecutter_config_file)
+        .get("project_name", "Python Package Template")
+        .lower()
+        .replace(" ", "_")
+        .replace("-", "_")
+    )
 
 
 @contextmanager
@@ -25,7 +29,7 @@ def inside_dir(dirpath):
     """
     old_path = os.getcwd()
     try:
-        os.chdir(dirpath)
+        os.chdir(str(dirpath))
         yield
     finally:
         os.chdir(old_path)
@@ -52,7 +56,10 @@ def run_inside_dir(command, dirpath):
     :param dirpath: String, path of the directory the command is being run.
     """
     with inside_dir(dirpath):
-        return subprocess.check_call(shlex.split(command))
+        try:
+            return subprocess.check_call(shlex.split(command))
+        except subprocess.CalledProcessError as e:
+            return e.returncode
 
 
 def check_output_inside_dir(command, dirpath):
@@ -92,7 +99,7 @@ def test_bake_with_defaults(cookies):
 def test_bake_and_run_tests(cookies):
     with bake_in_temp_dir(cookies) as result:
         assert result.project.isdir()
-        run_inside_dir("invoke test", str(result.project)) == 0
+        assert run_inside_dir("invoke test", result.project) == 0
         print("test_bake_and_run_tests path", str(result.project))
 
 
@@ -102,14 +109,14 @@ def test_bake_withspecialchars_and_run_tests(cookies):
         cookies, extra_context={"full_name": 'name "quote" name'}
     ) as result:
         assert result.project.isdir()
-        run_inside_dir("invoke test", str(result.project)) == 0
+        assert run_inside_dir("invoke test", result.project) == 0
 
 
 def test_bake_with_apostrophe_and_run_tests(cookies):
     """Ensure that a `full_name` with apostrophes does not break setup.py"""
     with bake_in_temp_dir(cookies, extra_context={"full_name": "O'connor"}) as result:
         assert result.project.isdir()
-        run_inside_dir("invoke test", str(result.project)) == 0
+        assert run_inside_dir("invoke test", result.project) == 0
 
 
 # def test_bake_and_run_travis_pypi_setup(cookies):
@@ -122,7 +129,7 @@ def test_bake_with_apostrophe_and_run_tests(cookies):
 #                             ' --repo audreyr/cookiecutter-pypackage --password invalidpass')
 #         run_inside_dir(travis_setup_cmd, project_path)
 #         # then:
-#         result_travis_config = yaml.load(result.project.join(".travis.yml").open(), Loader=yaml.FullLoader)
+#         result_travis_config = yaml.safe_load(result.project.join(".travis.yml").open())
 #         min_size_of_encrypted_password = 50
 #         assert len(result_travis_config["deploy"]["password"]["secure"]) > min_size_of_encrypted_password
 
@@ -131,7 +138,7 @@ def test_bake_without_travis_pypi_setup(cookies):
     with bake_in_temp_dir(
         cookies, extra_context={"use_pypi_deployment_with_travis": "n"}
     ) as result:
-        result_travis_config = yaml.load(result.project.join(".travis.yml").open(), Loader=yaml.FullLoader)
+        result_travis_config = yaml.safe_load(result.project.join(".travis.yml").open())
         assert "deploy" not in result_travis_config
         assert "python" == result_travis_config["language"]
         found_toplevel_files = [f.basename for f in result.project.listdir()]
@@ -151,10 +158,12 @@ def test_using_pytest(cookies):
         lines = pipfile_file_path.readlines()
         assert 'pytest = "*"\n' in lines
         # Test contents of test file
-        test_file_path = result.project.join("tests/test_{}.py".format(default_package_name))
+        test_file_path = result.project.join(
+            "tests/test_{}.py".format(default_package_name)
+        )
         lines = test_file_path.readlines()
         assert "import pytest" in "".join(lines)
-        run_inside_dir("invoke test", str(result.project)) == 0
+        assert run_inside_dir("invoke test", result.project) == 0
 
 
 def test_using_google_docstrings(cookies):
@@ -190,18 +199,16 @@ def test_bake_with_console_script_files(cookies):
 
 
 def test_bake_with_console_script_cli(cookies):
-    context = {"command_line_interface": "click"}
-    result = cookies.bake(extra_context=context)
+    result = cookies.bake()
     project_path, project_slug, project_dir = project_info(result)
+
     module_path = os.path.join(project_dir, "cli.py")
     module_name = ".".join([project_slug, "cli"])
-    if sys.version_info >= (3, 5):
-        spec = importlib.util.spec_from_file_location(module_name, module_path)
-        cli = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(cli)
-    else:
-        file_loader = importlib.machinery.SourceFileLoader
-        cli = file_loader(module_name, module_path).load_module()
+
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+
     runner = CliRunner()
     noarg_result = runner.invoke(cli.main)
     assert noarg_result.exit_code == 0
