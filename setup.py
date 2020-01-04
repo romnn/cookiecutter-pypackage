@@ -9,6 +9,8 @@ test_requirements = [
     "pytest-cookies",
     "pytest-xdist",
     "pytest-sugar",
+    "oyaml",
+    # "pyfakefs",
 ]
 coverage_requirements = ["coverage", "codecov"]
 docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme", "sphinxemoji"]

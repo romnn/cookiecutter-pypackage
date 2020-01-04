@@ -11,6 +11,8 @@ pytest-cov = "*"
 pytest-cookies = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
+oyaml = "*"
+# pyfakefs = "*"
 # Coverage
 coverage = "*"
 codecov = "*"

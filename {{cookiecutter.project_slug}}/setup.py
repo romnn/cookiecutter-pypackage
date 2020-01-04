@@ -29,7 +29,8 @@ test_requirements = [
     "pytest-xdist",
     "pytest-sugar",
     "mypy",
-    "codecov",
+    "oyaml",
+    "pyfakefs",
 ]
 coverage_requirements = ["coverage", "codecov"]
 docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme", "sphinxemoji"]
@@ -38,6 +39,7 @@ tool_requirements = [
     "m2r",
     "twine",
     "invoke",
+    "pyyaml",
     "pre-commit",
     "cookiecutter",
     "bump2version",
