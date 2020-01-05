@@ -117,9 +117,16 @@ After your project was created:
 
     $ invoke fix-token
 
-* Add the repo to your ReadTheDocs_ account and enable the service hook.
+  Now you can push the new ``.travis.yml`` to your remote repository::
+
+    $ git add .travis.yml
+    $ git commit -m "Add PyPI deployment token"
+    $ git push
+
+* Add the repo to your ReadTheDocs_ account under ``My Projects > Import Project`` and enable the service hook
+  if you did not connect ReadTheDocs to your GitHub.
 * If you wish to also publish your documentation on `GitHub Pages`_,
-  `generate a GitHub access token <https://github.com/settings/tokens>`_ for `public_repo` and set this
+  `generate a GitHub access token <https://github.com/settings/tokens>`_ for `repo:public_repo` and set this
   token in your travis build settings at `<https://travis-ci.com/myusername/mypackage/settings>`_
   as a secret environment variable ``GH_TOKEN``.
 
