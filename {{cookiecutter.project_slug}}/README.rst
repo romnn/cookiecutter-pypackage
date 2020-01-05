@@ -3,12 +3,12 @@
 ===============================
 
 .. image:: https://img.shields.io/travis/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.svg
-        :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+        :target: https://travis-ci.{{ cookiecutter.travis_plan }}/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
         :alt: Build Status
 
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg
         :target: https://pypi.python.org/pypi/{{ cookiecutter.project_slug }}
-        :alt: PyPi version
+        :alt: PyPI version
 
 .. image:: https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
         :target: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
@@ -20,11 +20,11 @@
 
 .. image:: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
-        :alt: Test coverage
+        :alt: Test Coverage
 
 """"""""
 
-Your short description here
+Your short description here. `{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }} <https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}>`_
 
 .. code-block:: console
 
