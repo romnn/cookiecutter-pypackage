@@ -2,7 +2,7 @@
 {{ cookiecutter.project_name }}
 ===============================
 
-.. image:: https://img.shields.io/travis/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.svg
+.. image:: https://travis-ci.{{ cookiecutter.travis_plan }}/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.svg?branch=master
         :target: https://travis-ci.{{ cookiecutter.travis_plan }}/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
         :alt: Build Status
 

@@ -4,7 +4,7 @@
 Cookiecutter PyPackage (romnnn)
 ===============================
 
-.. image:: https://travis-ci.org/romnnn/cookiecutter-pypackage.svg?branch=master
+.. image:: https://travis-ci.com/romnnn/cookiecutter-pypackage.svg?branch=master
     :target: https://travis-ci.com/romnnn/cookiecutter-pypackage
     :alt: Build status
 .. image:: https://readthedocs.org/projects/romnnn-cookiecutter-pypackage/badge/?version=latest
