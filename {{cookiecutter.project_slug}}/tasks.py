@@ -153,6 +153,7 @@ def _fix_token(config_file=None, force=False, verify=True):
     assert travis_config
     with open(config_file, "w") as _file:
         yaml.dump(travis_config, _file)
+    print("Fixed!")
 
 
 @task(help=dict(
