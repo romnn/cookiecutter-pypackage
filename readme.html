@@ -311,10 +311,17 @@ so you need to manually edit the <code class="docutils literal notranslate"><spa
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> invoke fix-token
 </pre></div>
 </div>
+<p>Now you can push the new <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> to your remote repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git add .travis.yml
+<span class="gp">$</span> git commit -m <span class="s2">&quot;Add PyPI deployment token&quot;</span>
+<span class="gp">$</span> git push
+</pre></div>
+</div>
 </li>
-<li><p>Add the repo to your <a class="reference external" href="https://readthedocs.org/">ReadTheDocs</a> account and enable the service hook.</p></li>
+<li><p>Add the repo to your <a class="reference external" href="https://readthedocs.org/">ReadTheDocs</a> account under <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Projects</span> <span class="pre">&gt;</span> <span class="pre">Import</span> <span class="pre">Project</span></code> and enable the service hook
+if you did not connect ReadTheDocs to your GitHub.</p></li>
 <li><p>If you wish to also publish your documentation on <a class="reference external" href="https://pages.github.com/">GitHub Pages</a>,
-<a class="reference external" href="https://github.com/settings/tokens">generate a GitHub access token</a> for <cite>public_repo</cite> and set this
+<a class="reference external" href="https://github.com/settings/tokens">generate a GitHub access token</a> for <cite>repo:public_repo</cite> and set this
 token in your travis build settings at <a class="reference external" href="https://travis-ci.com/myusername/mypackage/settings">https://travis-ci.com/myusername/mypackage/settings</a>
 as a secret environment variable <code class="docutils literal notranslate"><span class="pre">GH_TOKEN</span></code>.</p>
 <p>If you do not want to deploy to <a class="reference external" href="https://pages.github.com/">GitHub Pages</a>, remove the <code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">pages</span></code> build stage from <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code>.</p>
