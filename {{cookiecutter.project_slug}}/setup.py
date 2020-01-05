@@ -8,6 +8,8 @@ from pathlib import Path
 
 short_description = "No description has been added so far."
 
+version = "{{ cookiecutter.version }}"
+
 try:
     if (Path().parent / "README.rst").is_file():
         with open(str(Path().parent / "README.rst")) as readme_file:
@@ -91,6 +93,6 @@ setup(
     packages=find_packages(include=["{{ cookiecutter.project_slug }}"]),
     test_suite="tests",
     url="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}",
-    version="{{ cookiecutter.version }}",
+    version=version,
     zip_safe=False,
 )

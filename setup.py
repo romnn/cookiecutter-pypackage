@@ -2,6 +2,8 @@
 
 from setuptools import setup
 
+version = "0.1.0"
+
 test_requirements = [
     "tox",
     "pytest",
@@ -9,8 +11,7 @@ test_requirements = [
     "pytest-cookies",
     "pytest-xdist",
     "pytest-sugar",
-    "ruamel.yaml",
-    # "pyfakefs",
+    "ruamel.yaml"
 ]
 coverage_requirements = ["coverage", "codecov"]
 docs_requirements = ["sphinx>=2.0", "romnnn_sphinx_press_theme", "sphinxemoji"]
@@ -20,7 +21,7 @@ setup(
     name="romnnn-cookiecutter-pypackage",
     packages=[],
     python_requires=">=3.6",
-    version="0.1.0",
+    version=version,
     description="Cookiecutter template for a python package",
     author="romnnn",
     license="BSD",
