@@ -6,10 +6,12 @@ import shlex
 import subprocess
 from contextlib import contextmanager
 
-import oyaml as yaml
+from ruamel.yaml import YAML
 from click.testing import CliRunner
 from cookiecutter.utils import rmtree
 
+
+yaml = YAML()
 dir_path = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(dir_path, "../cookiecutter.json")) as cookiecutter_config_file:
     default_package_name = (
@@ -129,7 +131,8 @@ def test_bake_with_apostrophe_and_run_tests(cookies):
 #                             ' --repo audreyr/cookiecutter-pypackage --password invalidpass')
 #         run_inside_dir(travis_setup_cmd, project_path)
 #         # then:
-#         result_travis_config = yaml.safe_load(result.project.join(".travis.yml").open())
+#         with open(result.project.join(".travis.yml"), "r") as file:
+#           result_travis_config = yaml.load(file)
 #         min_size_of_encrypted_password = 50
 #         assert len(result_travis_config["deploy"]["password"]["secure"]) > min_size_of_encrypted_password
 
@@ -138,7 +141,8 @@ def test_bake_without_travis_pypi_setup(cookies):
     with bake_in_temp_dir(
         cookies, extra_context={"use_pypi_deployment_with_travis": "n"}
     ) as result:
-        result_travis_config = yaml.safe_load(result.project.join(".travis.yml").open())
+        with open(result.project.join(".travis.yml"), "r") as file:
+            result_travis_config = yaml.load(file)
         assert "deploy" not in result_travis_config
         assert "python" == result_travis_config["language"]
         found_toplevel_files = [f.basename for f in result.project.listdir()]

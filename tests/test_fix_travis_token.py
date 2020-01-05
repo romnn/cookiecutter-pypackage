@@ -5,9 +5,10 @@ import subprocess
 from collections import OrderedDict
 from contextlib import contextmanager
 
-import oyaml as yaml
+from ruamel.yaml import YAML
 from cookiecutter.utils import rmtree
 
+yaml = YAML()
 dir_path = os.path.dirname(os.path.realpath(__file__))
 travis_config_samples_path = os.path.join(dir_path, "sample_travis_configs")
 
@@ -90,8 +91,8 @@ class Fix:
     def parse_configs(self):
         with open(self.config_file, "r") as _source_file:
             with open(self.project_config_file, "r") as _destination_file:
-                before = sort_dict(yaml.safe_load(_source_file))
-                after = sort_dict(yaml.safe_load(_destination_file))
+                before = sort_dict(yaml.load(_source_file))
+                after = sort_dict(yaml.load(_destination_file))
                 return before, after
 
     def get(self):

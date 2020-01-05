@@ -29,7 +29,6 @@ test_requirements = [
     "pytest-xdist",
     "pytest-sugar",
     "mypy",
-    "oyaml",
     "pyfakefs",
 ]
 coverage_requirements = ["coverage", "codecov"]
@@ -39,7 +38,7 @@ tool_requirements = [
     "m2r",
     "twine",
     "invoke",
-    "pyyaml",
+    "ruamel.yaml",
     "pre-commit",
     "cookiecutter",
     "bump2version",

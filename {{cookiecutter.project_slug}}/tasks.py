@@ -4,7 +4,7 @@ Tasks for maintaining the project.
 Execute 'invoke --list' for guidance on using Invoke
 """
 import shutil
-import oyaml as yaml
+from ruamel.yaml import YAML
 import pprint
 
 from invoke import task
@@ -12,6 +12,7 @@ import webbrowser
 from pathlib import Path
 
 Path().expanduser()
+yaml = YAML()
 
 ROOT_DIR = Path(__file__).parent
 SETUP_FILE = ROOT_DIR.joinpath("setup.py")
@@ -86,8 +87,8 @@ def _fix_token(config_file=None, force=False, verify=True):
     config_file = config_file or TRAVIS_CONFIG_FILE
     with open(config_file, "r") as _file:
         try:
-            travis_config = yaml.safe_load(_file)
-        except yaml.YAMLError:
+            travis_config = yaml.load(_file)
+        except Exception:
             raise ValueError(
                 "Failed to parse the travis configuration. "
                 "Make sure the config only contains valid YAML and keys as specified by travis."
@@ -151,7 +152,7 @@ def _fix_token(config_file=None, force=False, verify=True):
     # Save the new travis config
     assert travis_config
     with open(config_file, "w") as _file:
-        yaml.dump(travis_config, _file, default_flow_style=False)
+        yaml.dump(travis_config, _file)
 
 
 @task(help=dict(

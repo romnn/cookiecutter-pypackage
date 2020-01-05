@@ -9,7 +9,7 @@ test_requirements = [
     "pytest-cookies",
     "pytest-xdist",
     "pytest-sugar",
-    "oyaml",
+    "ruamel.yaml",
     # "pyfakefs",
 ]
 coverage_requirements = ["coverage", "codecov"]
