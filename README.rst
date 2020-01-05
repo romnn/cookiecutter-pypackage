@@ -79,7 +79,7 @@ After your project was created:
     $ git remote add origin git@github.com:myusername/mypackage.git
     $ git add .
     $ git commit -m "Initial commit"
-    $ git push origin master
+    $ git push --set-upstream origin master
 
 * Activate the project's virtual environment with::
 
@@ -102,7 +102,7 @@ After your project was created:
     $ twine upload dist/*
 
 * Get a deployment token for your package on PyPI_ under ``Manage > Settings > Create token``.
-  It is good practice to use your package name as the token description and restrict access to only this package.\
+  It is good practice to use your package name as the token description and restrict access to only this package.
   Make sure to copy to copy the token as we will use it in the next steps.
 * Add the repo to your `Travis-CI`_ account. If you have connected travis with GitHub this is done automatically.
 * `Install the Travis CLI`_ and run::
