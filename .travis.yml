@@ -1,13 +1,21 @@
 language: python
-python:
-  - 3.8
-  - 3.7
-  - 3.6
-install: pip install -U tox-travis
-script: tox
 jobs:
   include:
-  - stage: deploy pages
+  - stage: test
+    name: "Unit tests"
+    install: pip install -U tox-travis
+    script: tox
+    python:
+    - 3.8
+    - 3.7
+    - 3.6
+  - stage: test
+    name: "Measure code coverage"
+    install: pip install -U tox-travis
+    script: tox -e codecov
+    python: 3.6
+  - stage: deploy
+    name: "Deploy to GitHub Pages"
     script: invoke docs && touch docs/build/.nojekyll
     before_script:
     - pipenv install --dev --skip-lock
@@ -22,7 +30,3 @@ jobs:
       keep_history: true
       on:
         branch: master
-  - stage: codecov
-    install: pip install -U tox-travis
-    script: tox -e codecov
-    python: 3.6
