@@ -23,8 +23,8 @@ Let's assume the current version is ``1.3.2``.
 ======================= ============
 Command                 New version
 ======================= ============
-``bump2version major``  ``2.3.2``
-``bump2version minor``  ``1.4.2``
+``bump2version major``  ``2.0.0``
+``bump2version minor``  ``1.4.0``
 ``bump2version patch``  ``1.3.3``
 ======================= ============
 

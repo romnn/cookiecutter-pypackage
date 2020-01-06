@@ -273,7 +273,7 @@ to my personal needs and modified for ease of use and simplicity.</p>
 <span class="gp">$</span> git remote add origin git@github.com:myusername/mypackage.git
 <span class="gp">$</span> git add .
 <span class="gp">$</span> git commit -m <span class="s2">&quot;Initial commit&quot;</span>
-<span class="gp">$</span> git push origin master
+<span class="gp">$</span> git push --set-upstream origin master
 </pre></div>
 </div>
 </li>
@@ -298,7 +298,8 @@ Run <code class="docutils literal notranslate"><span class="pre">exit</span></co
 </div>
 </li>
 <li><p>Get a deployment token for your package on <a class="reference external" href="https://pypi.org">PyPI</a> under <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">&gt;</span> <span class="pre">Settings</span> <span class="pre">&gt;</span> <span class="pre">Create</span> <span class="pre">token</span></code>.
-It is good practice to use your package name as the token description and restrict access to only this package.Make sure to copy to copy the token as we will use it in the next steps.</p></li>
+It is good practice to use your package name as the token description and restrict access to only this package.
+Make sure to copy to copy the token as we will use it in the next steps.</p></li>
 <li><p>Add the repo to your <a class="reference external" href="https://travis-ci.com">Travis-CI</a> account. If you have connected travis with GitHub this is done automatically.</p></li>
 <li><p><a class="reference external" href="https://github.com/travis-ci/travis.rb#installation">Install the Travis CLI</a> and run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> travis encrypt &lt;your-token&gt; --add deploy.password         <span class="c1"># When using travis.org</span>
