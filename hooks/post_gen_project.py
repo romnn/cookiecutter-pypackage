@@ -26,7 +26,7 @@ try:
     from halo import Halo
 except (ImportError, ModuleNotFoundError):
     subprocess.check_output(
-        "pip install halo", stderr=subprocess.STDOUT, shell=True
+        "pip install --no-cache-dir halo", stderr=subprocess.STDOUT, shell=True
     )
 
 try:
@@ -82,10 +82,10 @@ def initialize_git():
 def install_dependencies():
     with Halo(text="Installing development dependencies", spinner="dots", color="magenta") as spinner:
         try:
-            run_command("python3 -m pip install pipx", stderr=subprocess.STDOUT, shell=True)
+            run_command("python3 -m pip install --no-cache-dir pipx", stderr=subprocess.STDOUT, shell=True)
             run_command("python3 -m pipx ensurepath", stderr=subprocess.STDOUT, shell=True)
             run_command("pipx install pipenv", stderr=subprocess.STDOUT, shell=True)
-            run_command("pipenv install --dev", stderr=subprocess.STDOUT, shell=True)
+            run_command("pipenv install --clear --dev", stderr=subprocess.STDOUT, shell=True)
         except Exception:
             spinner.fail("Failed to install development dependencies")
             raise
