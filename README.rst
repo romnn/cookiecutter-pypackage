@@ -63,8 +63,10 @@ The following features have been **added**:
 Quickstart
 ----------
 
-Install ``cookiecutter>=1.4.0`` if you haven't already::
+Install ``cookiecutter>=1.4.0`` and ``pipenv``
+(see `here <https://github.com/pypa/pipenv>`_ for installation without ``apt``) if you haven't already::
 
+    $ sudo apt install pipenv  # for apt users
     $ pip install -U cookiecutter
 
 Generate your python project (you will be asked for the project name etc)::
