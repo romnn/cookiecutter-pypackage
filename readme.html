@@ -258,10 +258,11 @@ to my personal needs and modified for ease of use and simplicity.</p>
 </div>
 <div class="section" id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
-<p>Install <code class="docutils literal notranslate"><span class="pre">cookiecutter&gt;=1.4.0</span></code> and <code class="docutils literal notranslate"><span class="pre">pipenv</span></code>
-(see <a class="reference external" href="https://github.com/pypa/pipenv">here</a> for installation without <code class="docutils literal notranslate"><span class="pre">apt</span></code>) if you haven’t already:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt install pipenv  <span class="c1"># for apt users</span>
-<span class="gp">$</span> pip install -U cookiecutter
+<p>Install <code class="docutils literal notranslate"><span class="pre">cookiecutter&gt;=1.4.0</span></code>, <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> and <a class="reference external" href="https://github.com/pypa/pipenv">pipenv</a> if you haven’t already:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python3 -m pip install --no-cache-dir virtualenv
+<span class="gp">$</span> python3 -m pip install -U cookiecutter
+<span class="gp">$</span> sudo apt install pipenv     <span class="c1"># for apt users</span>
+<span class="gp">$</span> brew install pipenv         <span class="c1"># for mac users</span>
 </pre></div>
 </div>
 <p>Generate your python project (you will be asked for the project name etc):</p>
