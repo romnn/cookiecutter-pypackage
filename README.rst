@@ -63,11 +63,12 @@ The following features have been **added**:
 Quickstart
 ----------
 
-Install ``cookiecutter>=1.4.0`` and ``pipenv``
-(see `here <https://github.com/pypa/pipenv>`_ for installation without ``apt``) if you haven't already::
+Install ``cookiecutter>=1.4.0``, ``virtualenv`` and `pipenv <https://github.com/pypa/pipenv>`_ if you haven't already::
 
-    $ sudo apt install pipenv  # for apt users
-    $ pip install -U cookiecutter
+    $ python3 -m pip install --no-cache-dir virtualenv
+    $ python3 -m pip install -U cookiecutter
+    $ sudo apt install pipenv     # for apt users
+    $ brew install pipenv         # for mac users
 
 Generate your python project (you will be asked for the project name etc)::
 
