@@ -11,7 +11,7 @@ from click.testing import CliRunner
 from {{cookiecutter.project_slug}} import cli, {{ cookiecutter.project_slug }}
 
 
-@pytest.fixture  # type: ignore
+@pytest.fixture
 def response() -> None:
     """Sample pytest fixture.
 
