@@ -1,14 +1,14 @@
 .. highlight:: console
 
 ===============================
-Cookiecutter PyPackage (romnnn)
+Cookiecutter PyPackage (romnn)
 ===============================
 
-.. image:: https://travis-ci.com/romnnn/cookiecutter-pypackage.svg?branch=master
-    :target: https://travis-ci.com/romnnn/cookiecutter-pypackage
+.. image:: https://travis-ci.com/romnn/cookiecutter-pypackage.svg?branch=master
+    :target: https://travis-ci.com/romnn/cookiecutter-pypackage
     :alt: Build status
-.. image:: https://readthedocs.org/projects/romnnn-cookiecutter-pypackage/badge/?version=latest
-    :target: https://romnnn-cookiecutter-pypackage.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/romnn-cookiecutter-pypackage/badge/?version=latest
+    :target: https://romnn-cookiecutter-pypackage.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
 Opinionated ``cookiecutter`` template for python packages, forked from `briggySmalls/cookiecutter-pypackage`_.
@@ -72,7 +72,7 @@ Install ``cookiecutter>=1.4.0``, ``virtualenv`` and `pipenv <https://github.com/
 
 Generate your python project (you will be asked for the project name etc)::
 
-    $ cookiecutter https://github.com/romnnn/cookiecutter-pypackage.git
+    $ cookiecutter https://github.com/romnn/cookiecutter-pypackage.git
 
 After your project was created:
 
@@ -157,4 +157,4 @@ Documentation
 
 If you need more guidance I encourage you to have a look at the `more extensive documentation`_.
 
-.. _`more extensive documentation`: https://romnnn-cookiecutter-pypackage.readthedocs.io/en/latest/
+.. _`more extensive documentation`: https://romnn-cookiecutter-pypackage.readthedocs.io/en/latest/

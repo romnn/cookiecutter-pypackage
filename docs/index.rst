@@ -1,4 +1,4 @@
-Welcome to romnnn-cookiecutter-pypackage's documentation!
+Welcome to romnn-cookiecutter-pypackage's documentation!
 ==========================================================
 
 Getting Started

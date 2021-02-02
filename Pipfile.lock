@@ -433,7 +433,7 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==2.24.0"
         },
-        "romnnn-sphinx-press-theme": {
+        "romnn-sphinx-press-theme": {
             "hashes": [
                 "sha256:00a168c485a020ab8637c8d58db4d8d9cd9585c9a7cc15fba9bdfbf6f2dfa909"
             ],
