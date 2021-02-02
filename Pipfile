@@ -6,10 +6,10 @@ name = "pypi"
 [dev-packages]
 # Testing
 tox = "*"
-pytest = "*"
+pytest = "<6.0.0"
 pytest-cov = "*"
 pytest-cookies = "*"
-pytest-xdist = "*"
+pytest-xdist = "<=1.34.0"
 pytest-sugar = "*"
 # Coverage
 coverage = "*"
