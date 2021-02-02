@@ -14,7 +14,6 @@ test_requirements = [
     "ruamel.yaml"
 ]
 coverage_requirements = ["coverage", "codecov"]
-docs_requirements = ["sphinx>=2.0", "romnn_sphinx_press_theme", "sphinxemoji"]
 dev_requirements = ["invoke", "pre-commit", "cookiecutter"]
 
 setup(
@@ -30,10 +29,8 @@ setup(
     keywords=["cookiecutter", "template", "package"],
     extras_require=dict(
         dev=dev_requirements
-        + docs_requirements
         + test_requirements
         + coverage_requirements,
-        docs=docs_requirements,
         test=test_requirements + coverage_requirements,
     ),
     classifiers=[
