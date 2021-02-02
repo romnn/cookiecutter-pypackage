@@ -13,11 +13,6 @@ pytest-xdist = "*"
 pytest-sugar = "*"
 # Coverage
 coverage = "*"
-codecov = "*"
-# Docs
-sphinx = ">=2.0"
-romnn_sphinx_press_theme = "*"
-sphinxemoji = "*"
 # Tools
 "ruamel.yaml" = "*"
 invoke = "*"

@@ -7,9 +7,6 @@ Cookiecutter PyPackage (romnn)
 .. image:: https://travis-ci.com/romnn/cookiecutter-pypackage.svg?branch=master
     :target: https://travis-ci.com/romnn/cookiecutter-pypackage
     :alt: Build status
-.. image:: https://readthedocs.org/projects/romnn-cookiecutter-pypackage/badge/?version=latest
-    :target: https://romnn-cookiecutter-pypackage.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
 
 Opinionated ``cookiecutter`` template for python packages, forked from `briggySmalls/cookiecutter-pypackage`_.
 
@@ -49,7 +46,7 @@ The following features have been **removed**:
 The following features have been **changed**:
 
 * ``yapf`` was replaced by ``black`` for formatting python code
-* ``alabaster`` was replaced by ``press`` as the default documentation theme
+* TODO: use hugo for documentation
 
 The following features have been **added**:
 
@@ -151,10 +148,3 @@ After your project was created:
 .. _Install the Travis CLI: https://github.com/travis-ci/travis.rb#installation
 .. _ReadTheDocs: https://readthedocs.org/
 .. _GitHub Pages: https://pages.github.com/
-
-Documentation
--------------
-
-If you need more guidance I encourage you to have a look at the `more extensive documentation`_.
-
-.. _`more extensive documentation`: https://romnn-cookiecutter-pypackage.readthedocs.io/en/latest/
