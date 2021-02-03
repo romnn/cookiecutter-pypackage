@@ -121,33 +121,6 @@ def test_bake_with_apostrophe_and_run_tests(cookies):
         assert run_inside_dir("invoke test", result.project) == 0
 
 
-# def test_bake_and_run_travis_pypi_setup(cookies):
-#     # given:
-#     with bake_in_temp_dir(cookies) as result:
-#         project_path = str(result.project)
-#
-#         # when:
-#         travis_setup_cmd = ('python travis_pypi_setup.py'
-#                             ' --repo audreyr/cookiecutter-pypackage --password invalidpass')
-#         run_inside_dir(travis_setup_cmd, project_path)
-#         # then:
-#         with open(result.project.join(".travis.yml"), "r") as file:
-#           result_travis_config = yaml.load(file)
-#         min_size_of_encrypted_password = 50
-#         assert len(result_travis_config["deploy"]["password"]["secure"]) > min_size_of_encrypted_password
-
-
-def test_bake_without_travis_pypi_setup(cookies):
-    with bake_in_temp_dir(
-        cookies, extra_context={"use_pypi_deployment_with_travis": "n"}
-    ) as result:
-        with open(result.project.join(".travis.yml"), "r") as file:
-            result_travis_config = yaml.load(file)
-        assert "deploy" not in result_travis_config
-        assert "python" == result_travis_config["language"]
-        found_toplevel_files = [f.basename for f in result.project.listdir()]
-
-
 def test_mit_license(cookies):
     with bake_in_temp_dir(cookies) as result:
         assert "MIT" in result.project.join("LICENSE").read()
@@ -168,26 +141,6 @@ def test_using_pytest(cookies):
         lines = test_file_path.readlines()
         assert "import pytest" in "".join(lines)
         assert run_inside_dir("invoke test", result.project) == 0
-
-
-def test_using_google_docstrings(cookies):
-    with bake_in_temp_dir(cookies) as result:
-        assert result.project.isdir()
-        # Test docs include sphinx extension
-        docs_conf_file_path = result.project.join("docs/conf.py")
-        lines = docs_conf_file_path.readlines()
-        assert "sphinx.ext.napoleon" in "".join(lines)
-
-
-def test_not_using_google_docstrings(cookies):
-    with bake_in_temp_dir(
-        cookies, extra_context={"use_google_docstrings": "n"}
-    ) as result:
-        assert result.project.isdir()
-        # Test docs do not include sphinx extension
-        docs_conf_file_path = result.project.join("docs/conf.py")
-        lines = docs_conf_file_path.readlines()
-        assert "sphinxcontrib.napoleon" not in "".join(lines)
 
 
 def test_bake_with_console_script_files(cookies):
