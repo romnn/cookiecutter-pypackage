@@ -83,79 +83,6 @@ def _create(d, *keys):
             current = current[key]
 
 
-def _fix_token(config_file=None, force=False, verify=True):
-    config_file = config_file or TRAVIS_CONFIG_FILE
-    with open(config_file, "r") as _file:
-        try:
-            travis_config = yaml.load(_file)
-        except Exception:
-            raise ValueError(
-                "Failed to parse the travis configuration. "
-                "Make sure the config only contains valid YAML and keys as specified by travis."
-            )
-
-        # Get the generated token from the top level deploy config added by the travis cli
-        try:
-            real_token = travis_config["deploy"]["password"]["secure"]
-        except (TypeError, KeyError):
-            raise AssertionError("Can't find any top level deployment tokens")
-
-        try:
-            # Find the build stage that deploys to PyPI
-            pypy_stages = [
-                stage
-                for stage in travis_config["jobs"]["include"]
-                if stage.get("deploy", dict()).get("provider") == "pypi"
-            ]
-            assert (
-                len(pypy_stages) > 0
-            ), "Can't set the new token because there are no stages deploying to PyPI"
-            assert (
-                len(pypy_stages) < 2
-            ), "Can't set the new token because there are multiple stages deploying to PyPI"
-        except (TypeError, KeyError):
-            raise AssertionError("Can't set the new token because there no build stages")
-
-        try:
-            is_mock_token = pypy_stages[0]["deploy"]["password"]["secure"] == "REPLACE_ME"
-            is_same_token = pypy_stages[0]["deploy"]["password"]["secure"] == real_token
-
-            unmodified = is_mock_token or is_same_token
-        except (TypeError, KeyError):
-            unmodified = False
-
-        # Set the new generated token as the stages deploy token
-        _create(pypy_stages[0], "deploy", "password", "secure")
-        pypy_stages[0]["deploy"]["password"]["secure"] = real_token
-
-        # Make sure it is fine to overwrite the config file
-        assert unmodified or force, (
-            'The secure token in the "{}" stage has already been changed. '
-            "Retry with --force if you are sure about replacing it.".format(
-                pypy_stages[0].get("stage", "PyPI deployment")
-            )
-        )
-
-        # Remove the top level deploy config added by the travis cli
-        travis_config.pop("deploy")
-
-        if not unmodified and verify:
-            pprint.pprint(travis_config)
-            if (
-                not input("Do you want to save this configuration? (y/n) ")
-                .strip()
-                .lower()
-                == "y"
-            ):
-                return
-
-    # Save the new travis config
-    assert travis_config
-    with open(config_file, "w") as _file:
-        yaml.dump(travis_config, _file)
-    print("Fixed!")
-
-
 @task(help=dict(
     force="Force overriding the current travis configuration",
     verify="Verify config changes by asking for the user's approval"
@@ -205,21 +132,7 @@ def coverage(c, publish=False, provider="codecov"):
 def docs(c, output="html"):
     """Generate documentation
     """
-    c.run(
-        "pipenv run sphinx-apidoc -o {} {{ cookiecutter.project_slug }}".format(
-            DOCS_DIR
-        )
-    )
-    c.run(
-        "pipenv run sphinx-build -b {} {} {}".format(
-            output.lower(), DOCS_DIR, DOCS_BUILD_DIR
-        )
-    )
-    if output.lower() == "html":
-        webbrowser.open(DOCS_INDEX.as_uri())
-    elif output.lower() == "latex":
-        c.run("cd {} && make".format(DOCS_BUILD_DIR))
-
+    pass
 
 @task
 def clean_docs(c):
