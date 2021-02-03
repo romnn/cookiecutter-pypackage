@@ -4,8 +4,8 @@
 Cookiecutter PyPackage (romnn)
 ===============================
 
-.. image:: https://travis-ci.com/romnn/cookiecutter-pypackage.svg?branch=master
-    :target: https://travis-ci.com/romnn/cookiecutter-pypackage
+.. image:: https://github.com/romnn/cookiecutter-pypackage/workflows/test/badge.svg
+    :target: https://github.com/romnn/cookiecutter-pypackage/actions
     :alt: Build status
 
 Opinionated ``cookiecutter`` template for python packages, forked from `briggySmalls/cookiecutter-pypackage`_.
