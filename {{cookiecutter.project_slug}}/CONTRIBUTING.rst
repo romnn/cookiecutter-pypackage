@@ -91,7 +91,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 1. The pull request should include tests.
 2. The pull request should work for python 3.5+. Check the
-   `build status of your pull request <https://travis-ci.{{ cookiecutter.travis_plan }}/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests>`_
+   `build status of your pull request <https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions>`_
    and make sure that all tests pass for all supported python versions.
 
 Publishing (Maintainers only)

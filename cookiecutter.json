@@ -5,5 +5,8 @@
   "project_name": "Python Package Template",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "_copy_without_render": [
+    ".github/workflows/*"
+  ]
 }
