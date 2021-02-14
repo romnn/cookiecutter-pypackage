@@ -88,7 +88,7 @@ After your project was created:
   it is likely that you are inside another shell that has been started sometime ago.
   Run ``exit`` and try again.
 
-  .. warning:: When you are done working on this project, run ``deactivate`` to deactivate the environment.
+  When you are done working on this project, run ``deactivate`` to deactivate the environment.
 
 * Make an initial release of your package to PyPI_. You will be asked for your credentials::
 

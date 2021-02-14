@@ -20,7 +20,7 @@
 
 """"""""
 
-Your short description here. `{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }} <https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}>`_
+Your short description here. 
 
 .. code-block:: console
 
@@ -33,7 +33,7 @@ Your short description here. `{{ cookiecutter.github_username }}.github.io/{{ co
 Development
 -----------
 
-For detailed instructions see `CONTRIBUTING <CONTRIBUTING.rst>`_.
+For detailed instructions see the `contribution guide <CONTRIBUTING.rst>`_.
 
 Tests
 ~~~~~~~

@@ -3,7 +3,17 @@ name: test
 on: [push]
 
 jobs:
-  build:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - name: Code checks
+      uses: pre-commit/action@v2.0.0
+      with:
+        extra_args: --all-files
+
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
