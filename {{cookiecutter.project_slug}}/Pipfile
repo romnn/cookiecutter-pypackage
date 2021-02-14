@@ -21,9 +21,7 @@ coverage = "*"
 # Tools
 pre-commit = "*"
 invoke = "*"
-"ruamel.yaml" = "*"
 m2r = "*"
-twine = "*"
 bump2version = "*"
 
 [packages]

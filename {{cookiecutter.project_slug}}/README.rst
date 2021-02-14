@@ -2,8 +2,8 @@
 {{ cookiecutter.project_name }}
 ===============================
 
-.. image:: https://travis-ci.{{ cookiecutter.travis_plan }}/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.svg?branch=master
-        :target: https://travis-ci.{{ cookiecutter.travis_plan }}/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+.. image:: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/workflows/test/badge.svg
+        :target: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions
         :alt: Build Status
 
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg
@@ -13,10 +13,6 @@
 .. image:: https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
         :target: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
         :alt: License
-
-.. image:: https://readthedocs.org/projects/{{ cookiecutter.project_slug | replace("_", "-") }}/badge/?version=latest
-        :target: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
 
 .. image:: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
@@ -29,10 +25,6 @@ Your short description here. `{{ cookiecutter.github_username }}.github.io/{{ co
 .. code-block:: console
 
     $ pip install {{ cookiecutter.project_slug }}
-
-See the `official documentation`_ for more information.
-
-.. _official documentation: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io
 
 .. code-block:: python
 

@@ -11,9 +11,8 @@ test_requirements = [
     "pytest-cookies",
     "pytest-xdist",
     "pytest-sugar",
-    "ruamel.yaml"
 ]
-coverage_requirements = ["coverage", "codecov"]
+coverage_requirements = ["coverage"]
 dev_requirements = ["invoke", "pre-commit", "cookiecutter"]
 
 setup(

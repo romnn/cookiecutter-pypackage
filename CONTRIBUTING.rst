@@ -33,13 +33,6 @@ Implement Features
 Look through the `GitHub issues`_ for features. Anything tagged with *"enhancement"*
 and *"help wanted"* is open to whoever wants to implement it.
 
-Write Documentation
-~~~~~~~~~~~~~~~~~~~
-
-cookiecutter-pypackage could always use more documentation, whether as part of the
-official cookiecutter-pypackage docs, in docstrings, or even on the web in blog posts,
-articles, and such.
-
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
@@ -92,10 +85,7 @@ Pull Request Guidelines
 Before you submit a pull request, check that it meets these guidelines:
 
 1. The pull request should include tests.
-2. If the pull request adds functionality, the documentation (``docs/``)  should be updated. Put
-   your new functionality into a function with a docstring and add the
-   feature to the list in ``README.rst``.
-3. The pull request should work for python 3.6+. Check the
+2. The pull request should work for python 3.6+. Check the
    `build status of your pull request <https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests>`_
    and make sure that all tests pass for all supported python versions.
 
