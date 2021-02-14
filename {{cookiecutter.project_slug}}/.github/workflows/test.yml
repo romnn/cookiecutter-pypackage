@@ -8,12 +8,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
+    - run: |
+        pip install pipenv
+        pipenv install --dev
     - name: Code checks
       uses: pre-commit/action@v2.0.0
       with:
         extra_args: --all-files
 
-  test:
+  tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
