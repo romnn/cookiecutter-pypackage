@@ -79,6 +79,7 @@ After your project was created:
 
 * Activate the project's virtual environment with::
 
+    $ pipenv install --dev
     $ pipenv shell
 
   When your environment is active, you should see the name of your package in your command prompt.
@@ -88,6 +89,11 @@ After your project was created:
   Run ``exit`` and try again.
 
   .. warning:: When you are done working on this project, run ``deactivate`` to deactivate the environment.
+
+* Make an initial release of your package to PyPI_. You will be asked for your credentials::
+
+  $ python setup.py sdist
+  $ twine upload dist/*
 
 * Get a deployment token for your package on PyPI_ under ``Manage > Settings > Create token``.
   It is good practice to use your package name as the token description and restrict access to only this package.
@@ -99,6 +105,7 @@ After your project was created:
   and lock them into your virtual environment with::
 
   $ pipenv install --dev
+  $ pipenv lock
 
 * Release new versions of your package by pushing a new tag to master::
 
