@@ -6,12 +6,10 @@ import shlex
 import subprocess
 from contextlib import contextmanager
 
-from ruamel.yaml import YAML
 from click.testing import CliRunner
 from cookiecutter.utils import rmtree
 
 
-yaml = YAML()
 dir_path = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(dir_path, "../cookiecutter.json")) as cookiecutter_config_file:
     default_package_name = (
